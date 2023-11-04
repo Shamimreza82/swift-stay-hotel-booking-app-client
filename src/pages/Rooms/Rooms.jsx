@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Navber from '../../components/Navber';
 
 const Rooms = () => {

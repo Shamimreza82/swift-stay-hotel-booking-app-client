@@ -1,13 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
+import Navber from "../components/Navber";
 
 
 
 const Register = () => {
     const {createUser} = useAuth()
-    const [email, setEmail] = useState(0)
-    const [password, setPassword] = useState(0)
+    const navigate = useNavigate()
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [name, setName] = useState("")
 
     const handleRegister = async e => {
         e.preventDefault()
@@ -16,6 +19,7 @@ const Register = () => {
             await createUser (email, password)
                 .then(result => {
                     console.log(result.user);
+                    navigate('/')
                 })
                 .catch(err => {
                     console.error(err);
@@ -30,12 +34,28 @@ const Register = () => {
 
   return (
     <div>
-      <div className="container m-auto">
-        <div >
-          <div className=" flex flex-col lg:flex-row-reverse md: py-10">
-            <div className="md:w-[40%]">
-            <p className="text-center pt-5 text-3xl font-bold text-green-500">Account Register</p>
-              <form onSubmit={handleRegister} className="card-body">
+        <Navber></Navber>
+        <div className="container m-auto py-12">
+        <div className="hero">
+          <div className=" flex flex-col-reverse md:flex-row-reverse  items-center">
+            <div className="text-center lg:text-left bg-slate-400 md:w-[50%] ">
+              <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+            </div>
+            <div className="bg-base-100 md:w-[40%]">
+              <form onSubmit={handleRegister} className="card-body ">
+                <p className="text-center text-3xl font-bold text-green-500">Account Register</p>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="name"
+                    className="input input-bordered"
+                    onBlur={(e)=> setName(e.target.value)}
+                
+                  />
+                </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -44,7 +64,7 @@ const Register = () => {
                     type="email"
                     placeholder="email"
                     className="input input-bordered"
-                    onBlur={(e) => setEmail(e.target.value)}
+                    onBlur={(e)=> setEmail(e.target.value)}
                     required
                   />
                 </div>
@@ -56,7 +76,7 @@ const Register = () => {
                     type="password"
                     placeholder="password"
                     className="input input-bordered"
-                    onBlur={(e) => setPassword(e.target.value)}
+                    onBlur={(e)=> setPassword(e.target.value)}
                     required
                   />
                   <label className="label">
@@ -65,14 +85,12 @@ const Register = () => {
                     </a>
                   </label>
                 </div>
-                <div className="form-control mt-6 ">
-                  <input type="submit" className="btn bg-green-500 hover:bg-slate-600 text-white" value="Register"></input>
+                <div className="form-control mt-6">
+                  <input type="submit" className="btn bg-green-500 hover:bg-slate-600 text-white" value='Register'></input>
                 </div>
               </form>
-              <div className="text-center">
-                  <Link to="/login" className="text-center pb-4">
-                         Have an account? <span className=" text-red-600 font-bold">Login</span> 
-                  </Link>
+              <div className="flex justify-center">
+                <Link to='/login' className="text-center pb-4"> Do you have an account? <span className="text-red-600 font-bold">Login</span></Link>
               </div>
             </div>
           </div>
