@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
@@ -10,6 +10,9 @@ const Login = () => {
 
     const {loginUser} = useAuth()
 
+    const location = useLocation()
+    const navigate = useNavigate()
+    console.log(location);
 
     const [email, setEmail] = useState(0)
     const [password, setPassword] = useState(0)
@@ -21,10 +24,8 @@ const Login = () => {
             await loginUser(email, password)
             .then(res => {
               console.log(res.user);
+              navigate(location?.state ? location.state : "/");
             })
-            
-            
-           
         } catch (error) {
             console.log(error);
         }

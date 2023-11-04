@@ -48,6 +48,20 @@ const Navber = () => {
                 {/* Navbar menu content here */}
                 <li>
                     <NavLink
+                    to="/"
+                    className={({ isActive, isPending, isTransitioning }) =>
+                    [
+                        isPending ? "pending" : "",
+                        isActive ? "active" : "",
+                        isTransitioning ? "transitioning" : "",
+                    ].join(" ")
+                    }
+                >
+                    Home
+                </NavLink>
+                </li>
+                <li>
+                    <NavLink
                     to="/rooms"
                     className={({ isActive, isPending, isTransitioning }) =>
                     [

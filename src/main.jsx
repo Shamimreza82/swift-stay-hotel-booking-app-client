@@ -6,9 +6,11 @@ import router from './Router/Router.jsx'
 import AuthProvider from './AuthProvider/AuthProvider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <div className='font-Poppins'>
+    <React.StrictMode>
     <AuthProvider>
       <RouterProvider router={router}></RouterProvider>
     </AuthProvider>
   </React.StrictMode>,
+  </div>
 )

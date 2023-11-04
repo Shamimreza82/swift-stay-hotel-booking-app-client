@@ -2,10 +2,16 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import React, { createContext, useEffect, useState} from 'react';
 import auth from '../firebase.Config/firebase.Config';
+import useAxios from '../Hooks/useAxios';
+
+
 
 
 export const AuthContext = createContext()
 const AuthProvider = ({children}) => {
+
+    const axios = useAxios()
+
 
     const [user, setuser] = useState(null)
     const [isLodeing, setIslodeing] = useState (true)
@@ -26,9 +32,21 @@ const AuthProvider = ({children}) => {
     
     useEffect(()=>{
         const unSubcribe = onAuthStateChanged(auth, (currentUser) => {
+            const userEmail = currentUser?.email || user?.email
+            console.log(userEmail);
+
             setuser(currentUser)
             console.log("user login in", currentUser);
             setIslodeing(false)
+            if(currentUser){
+                axios.post('/auth/access-token', {email: userEmail}, {withCredentials: true})
+                .then(res => {
+                    console.log(res.data);
+                })
+            }
+
+            
+
         })  
         return () => {
             unSubcribe()
