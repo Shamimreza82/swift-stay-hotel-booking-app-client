@@ -1,0 +1,93 @@
+[
+    {
+      "roomType": "Standard Room",
+      "description": "Indulge in comfort and convenience in our standard rooms. With essential amenities and cozy interiors, these rooms provide a pleasant stay for our guests, ensuring a rejuvenating experience. Unwind in a serene environment, equipped with modern facilities and thoughtful services, making your stay enjoyable and hassle-free. Enjoy the perfect balance of relaxation and functionality, ensuring a memorable and satisfying stay at our hotel. Our standard rooms are designed to cater to your every need, offering a homely ambiance and a tranquil atmosphere, creating a welcoming haven for travelers from all walks of life.",
+      "pricePerNight": 100,
+      "roomSize": "25 sqm",
+      "availability": true,
+      "roomImages": ["https://i.ibb.co/ySHLXg6/rooms-2.jpg", 
+      "https://i.ibb.co/fns2j4T/room45.jpg", "https://i.ibb.co/0mH3DqV/rooms-1.jpg"],
+      "specialOffers": {
+        "discountPercentage": 10,
+        "offerDescription": "Book now and get 10% off on your stay!"
+      },
+      "features": ["Queen-sized bed", "Work desk", "High-speed Wi-Fi", "Air conditioning", "Flat-screen TV", "Ensuite bathroom"]
+    },
+    {
+      "roomType": "Deluxe Room",
+      "description": "Elevate your experience with our deluxe rooms, offering an inviting blend of luxury and comfort. Indulge in a relaxing ambiance with picturesque views and sophisticated decor, creating a serene atmosphere for a truly memorable stay. Enjoy an upgraded level of hospitality, with carefully curated amenities and personalized services, ensuring a delightful and rejuvenating experience. Our deluxe rooms are designed to exceed your expectations, providing a harmonious blend of elegance and practicality, allowing you to unwind and immerse yourself in a world of luxury and tranquility, making your stay truly exceptional.",
+      "pricePerNight": 150,
+      "roomSize": "35 sqm",
+      "availability": true,
+      "roomImages": ["https://i.ibb.co/F0bcpm1/rooms-3.jpg", "https://i.ibb.co/t2DW6dH/rooms-11.jpg", "https://i.ibb.co/qMLkNp1/rooms-12.jpg"],
+      "specialOffers": null,
+      "features": ["King-sized bed", "Sitting area", "Mini-bar", "Balcony with a view", "Spa access", "Bathrobes and slippers"]
+    },
+    {
+      "roomType": "Suite",
+      "description": "Experience luxury at its finest in our lavish suites, featuring spacious layouts and premium amenities, providing an exclusive retreat for discerning travelers. Enjoy a seamless fusion of style and comfort, with tastefully designed interiors and personalized services, ensuring an unforgettable and indulgent stay. Our suites offer a sanctuary of sophistication, equipped with modern conveniences and elegant furnishings, creating an ambiance of opulence and refinement. Immerse yourself in a world of unparalleled luxury and relaxation, where every aspect of your comfort and pleasure is meticulously taken care of, guaranteeing a truly lavish and memorable experience.",
+      "pricePerNight": 250,
+      "roomSize": "50 sqm",
+      "availability": true,
+      "roomImages": ["https://i.ibb.co/4SQfG02/rooms-4.jpg", "https://i.ibb.co/MsjjLfQ/rooms-13.jpg", "https://i.ibb.co/8mKcQt6/rooms-14.jpg"],
+      "specialOffers": {
+        "discountPercentage": 15,
+        "offerDescription": "Enjoy a 15% discount on bookings for this suite!"
+      },
+      "features": ["Separate living area", "Dining table", "Jacuzzi", "Private balcony", "Personalized butler service", "Complimentary champagne"]
+    },
+    {
+      "roomType": "Family Room",
+      "description": "Create lasting memories with your loved ones in our spacious family rooms, thoughtfully designed to accommodate families of all sizes. Enjoy a comfortable and inviting environment, complete with extra beds and dedicated play areas for children, ensuring a delightful and enjoyable stay for the whole family. Our family rooms offer the perfect blend of practicality and comfort, allowing you to relax and bond with your loved ones in a homely and welcoming setting, creating cherished moments and unforgettable experiences that will be treasured for years to come.",
+      "pricePerNight": 200,
+      "roomSize": "40 sqm",
+      "availability": true,
+      "roomImages": ["https://i.ibb.co/3Rf5zbW/rooms-5.jpg", "https://i.ibb.co/xCrjb47/rooms-15.jpg", "https://i.ibb.co/f08vLf5/rooms-16.jpg"],
+      "specialOffers": null,
+      "features": ["Multiple beds", "Kids' play area", "Game console", "Connecting rooms", "Child-friendly amenities", "Complimentary breakfast for children"]
+    },
+    {
+      "roomType": "Single Room",
+      "description": "Discover comfort and affordability in our cozy single rooms, tailored for solo travelers seeking a peaceful and convenient stay. Enjoy a restful ambiance and essential amenities, providing a relaxing and hassle-free experience for travelers exploring the city on their own. Our single rooms offer a welcoming and secure environment, ensuring a comfortable and enjoyable stay for solo adventurers and business travelers, providing a convenient and budget-friendly accommodation option without compromising on quality and comfort.",
+      "pricePerNight": 80,
+      "roomSize": "20 sqm",
+      "availability": true,
+      "roomImages": ["https://i.ibb.co/30nwwpT/rooms-6.jpg", "https://i.ibb.co/kqd8H5K/rooms-29.jpg", "https://i.ibb.co/pndmrmr/rooms-30.jpg"],
+      "specialOffers": null,
+      "features": ["Twin bed", "Work desk", "City view", "Coffee maker", "In-room safe", "24/7 room service"]
+    },
+    {
+      "roomType": "Double Room",
+      "description": "Enjoy a romantic getaway in our spacious double rooms, designed for couples seeking a cozy and intimate retreat. Immerse yourself in a warm and inviting ambiance, complete with a comfortable double bed and essential amenities, ensuring a delightful and memorable stay for you and your loved one. Our double rooms offer a harmonious blend of comfort and intimacy, providing a tranquil and romantic setting for couples to relax and reconnect, making your stay a truly special and cherished experience.",
+      "pricePerNight": 120,
+      "roomSize": "30 sqm",
+      "availability": true,
+      "roomImages": ["https://i.ibb.co/WFc1wX1/rooms-7.jpg", "https://i.ibb.co/nM5pqFx/rooms-17.jpg", "https://i.ibb.co/nBqBVR2/rooms-22.jpg"],
+      "specialOffers": null,
+      "features": ["Double bed with premium bedding", "Chaise lounge", "Smart TV", "Walk-in shower", "Mini-fridge", "Complimentary welcome gift"]
+    },
+    {
+      "roomType": "Penthouse Suite",
+      "description": "Indulge in the epitome of luxury and sophistication with our exquisite penthouse suites, boasting panoramic views and an array of premium amenities for a truly opulent experience. Revel in a world of grandeur and elegance, complete with tastefully curated interiors and exclusive services, ensuring an unparalleled and lavish stay. Our penthouse suites redefine luxury living, providing a seamless fusion of comfort and style, where every detail is meticulously crafted to cater to your every need and desire, promising an unforgettable and indulgent escape that will leave you with cherished memories for a lifetime.",
+      "pricePerNight": 500,
+      "roomSize": "80 sqm",
+      "availability": true,
+      "roomImages": ["https://i.ibb.co/zQDyVfs/rooms-8.jpg", "https://i.ibb.co/fxFTW87/rooms-23.jpg", "https://i.ibb.co/6gCgKTX/rooms-24.jpg"],
+      "specialOffers": {
+        "discountPercentage": 20,
+        "offerDescription": "Book now and get 20% off on this exquisite penthouse suite!"
+      },
+      "features": ["Private terrace", "Personal hot tub", "Gourmet kitchen", "In-room entertainment system", "24/7 concierge service", "Luxury toiletries"]
+    },
+    {
+      "roomType": "Beachfront Villa",
+      "description": "Immerse yourself in the ultimate luxury and tranquility with our exclusive beachfront villas, offering a private and serene setting right on the beach. Indulge in personalized services and lavish amenities, ensuring an unforgettable and indulgent retreat away from the hustle and bustle of everyday life. Our beachfront villas offer a perfect blend of exclusivity and comfort, providing a sanctuary of relaxation and rejuvenation, where the soothing sound of waves and the breathtaking views of the ocean create an ambiance of serenity and bliss, allowing you to unwind and create timeless memories in an idyllic paradise.",
+      "pricePerNight": 800,
+      "roomSize": "150 sqm",
+      "availability": true,
+      "roomImages": ["https://i.ibb.co/RN7ghyn/rooms-9.jpg", "https://i.ibb.co/wYCMv6y/rooms-26.jpg", "https://i.ibb.co/2jCBks6/rooms-27.jpg"],
+      "specialOffers": null,
+      "features": ["Private beach access", "Infinity pool", "Outdoor dining area", "Personal chef on request", "Airport transfer service", "Beachfront yoga sessions"]
+    }
+  ]
+  
