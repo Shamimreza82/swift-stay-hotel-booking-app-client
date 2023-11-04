@@ -6,7 +6,7 @@ import { useLoaderData, useParams } from 'react-router-dom';
 const RoomDetailes = () => {
     const {id} = useParams()
     const room = useLoaderData()
-  
+    let count = 1
 
     const {data, isLoading, error, refetch} = useQuery({
         queryKey: ['rooms'], 
@@ -17,7 +17,7 @@ const RoomDetailes = () => {
     })
    console.log(data?.data);
 
-   const {roomType, description,pricePerNight, roomSize, availability, roomImages, specialOffers } = room
+   const {_id, roomType, description,pricePerNight, roomSize, availability, roomImages, specialOffers, features } = room
    console.log(roomImages);
 
    if(isLoading){
@@ -38,6 +38,15 @@ const RoomDetailes = () => {
                     </div>
                     <p>{roomType}</p>
                     <p>{description}</p>
+                    <div className='grid grid-cols-3 gap-4 py-6'>
+                        {
+                          features.map(feature => 
+                            <div key={feature} className='bg-slate-300'>
+                                <p className='py-3 pl-2' >{count++}. {feature}</p>
+                            </div>
+                            )  
+                        }
+                    </div>
                     <p>Price Per Night: {pricePerNight}</p>
                     <p>Room Side: {roomSize}</p>
                     <p> Availability: {availability ? "Available": "Unavailable"}</p>
@@ -45,9 +54,16 @@ const RoomDetailes = () => {
                     
                 </div>
                 <div className='col-span-4 bg-slate-300'>
-                    Right</div>
+                    <p>{roomType}</p>
+                    <p>Price Per Night: {pricePerNight}</p>
+                    <p>Room Side: {roomSize}</p>
+                    <p> Availability: {availability ? "Available": "Unavailable"}</p>
+                </div>
+                
             </div>
-           
+            <div className='max-w-7xl m-auto '>
+             <button className='btn'>Book Now</button>
+            </div>
         </div>
     );
 };
