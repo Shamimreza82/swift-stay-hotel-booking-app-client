@@ -7,18 +7,29 @@ import { Link } from 'react-router-dom';
 
 const Rooms = () => {
 
-    const {data: rooms, isLoading, error, refetch} = useQuery({
-        queryKey: ['rooms'], 
-        queryFn: async ()=> {
-           const res = await axios.get('http://localhost:5000/api/v1/rooms')
-           return res
-        }
-    })
+    const [roomsAll, setrRooms] = useState([])
 
-    if(isLoading){
-        return <div>Loading........</div>
-    }
-    console.log(error);
+    console.log(roomsAll);
+
+    useEffect(()=>{
+                axios.get('http://localhost:5000/api/v1/rooms')
+                .then(res => {
+                    setrRooms(res.data);
+                })
+    },[])
+
+    // const {data: rooms, isLoading, error, refetch} = useQuery({
+    //     queryKey: ['rooms'], 
+    //     queryFn: async ()=> {
+    //        const res = await axios.get('http://localhost:5000/api/v1/rooms')
+    //        return res
+    //     }
+    // })
+
+    // if(isLoading){
+    //     return <div>Loading........</div>
+    // }
+    // console.log(error);
 
     return (
         <div>
@@ -36,7 +47,7 @@ const Rooms = () => {
                     <div className='grid grid-cols-2 gap-5'>
                         
                         {
-                            rooms?.data?.map(rooms => 
+                            roomsAll?.map(rooms => 
                             <Link to={`/roomsDeities/${rooms?._id}`}  key={rooms?._id}>  
                                 <img src={rooms?.roomImages[0]} alt="" />
                                 <p>{rooms?.specialOffers?.discountPercentage}</p>
