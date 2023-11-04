@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
+import Navber from "../components/Navber";
 
 
 const Login = () => {
@@ -33,6 +34,7 @@ const Login = () => {
 
   return (
     <div>
+        <Navber></Navber>
       <div className="container m-auto py-12">
         <div className="hero">
           <div className=" flex flex-col-reverse md:flex-row-reverse  items-center">

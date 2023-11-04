@@ -1,7 +1,19 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+
+import { NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 const Navber = () => {
+    const navigate = useNavigate()
+
+    const {user, logeOut} = useAuth()
+
+    const handleLogout = () => {
+        logeOut()
+        .then(() => {
+            navigate('/')
+        } )
+    }
+
   return (
     <div className="bg-slate-200">
       <div className="drawer max-w-7xl m-auto">
@@ -36,7 +48,7 @@ const Navber = () => {
                 {/* Navbar menu content here */}
                 <li>
                     <NavLink
-                    to="/messages"
+                    to="/rooms"
                     className={({ isActive, isPending, isTransitioning }) =>
                     [
                         isPending ? "pending" : "",
@@ -50,6 +62,22 @@ const Navber = () => {
                 </li>
                 <li>
                     <NavLink
+                    to="/myBookings"
+                    className={({ isActive, isPending, isTransitioning }) =>
+                    [
+                        isPending ? "pending" : "",
+                        isActive ? "active" : "",
+                        isTransitioning ? "transitioning" : "",
+                    ].join(" ")
+                    }
+                >
+                   My Bookings
+                </NavLink>
+                </li>
+                {
+                    user ? <li>
+                    <NavLink
+                    onClick={handleLogout}
                     to="/messages"
                     className={({ isActive, isPending, isTransitioning }) =>
                     [
@@ -59,12 +87,25 @@ const Navber = () => {
                     ].join(" ")
                     }
                 >
-                   
+                   Logout
                 </NavLink>
-                </li>
+                </li> :
                 <li>
-                  <a>Navbar Item 2</a>
-                </li>
+                <NavLink
+                to="/login"
+                className={({ isActive, isPending, isTransitioning }) =>
+                [
+                    isPending ? "pending" : "",
+                    isActive ? "active" : "",
+                    isTransitioning ? "transitioning" : "",
+                ].join(" ")
+                }
+            >
+               Login
+            </NavLink>
+            </li>
+                }
+                
               </ul>
             </div>
           </div>
