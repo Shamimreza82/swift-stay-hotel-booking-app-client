@@ -7,6 +7,13 @@ const SpecialOffers = () => {
 
     const {data, isLoading} = useRooms()
 
+
+    if(isLoading){
+        return <div className='flex justify-center items-center '>
+            <span className="loading loading-spinner loading-md "></span>
+        </div>
+    }
+
     return (
         <div className='bg-zinc-200 my-8 md:py-20'>
             <div className='flex max-w-7xl m-auto'>
@@ -17,14 +24,14 @@ const SpecialOffers = () => {
             
             <div >
             <Marquee>
-            <div className='flex  gap-6'>
+            <div className='flex gap-6'>
                     {
                         data?.map(images => 
 
                         <div key={images._id}>
                             <div className='relative '>
                                 <img className='md:h-[300px] h-40' src={images.roomImages} alt="" />
-                                 <p className='absolute bottom-0 text-red-600  '>Spachal </p>
+                                 <p className='absolute bottom-0 text-red-600  '>Spacial </p>
                             </div>
                             <p></p>
                         </div>)

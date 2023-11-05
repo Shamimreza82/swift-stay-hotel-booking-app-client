@@ -7,7 +7,7 @@ const useRooms = () => {
         queryKey: ['rooms'], 
         queryFn: async () => {
              const res = await axios('http://localhost:5000/api/v1/rooms')
-             return res.data
+             return await res.data
         }
     })
 
