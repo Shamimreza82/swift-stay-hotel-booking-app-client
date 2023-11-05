@@ -8,15 +8,16 @@ import { Link } from 'react-router-dom';
 const Rooms = () => {
 
     const [roomsAll, setrRooms] = useState([])
-
+    const [price, setPrice] = useState()
     console.log(roomsAll);
+    console.log(price);
 
     useEffect(()=>{
-                axios.get('http://localhost:5000/api/v1/rooms')
+                axios.get(`http://localhost:5000/api/v1/rooms?sortField=pricePerNight&sortOrder=${price}`)
                 .then(res => {
                     setrRooms(res.data);
                 })
-    },[])
+    },[price])
 
     // const {data: rooms, isLoading, error, refetch} = useQuery({
     //     queryKey: ['rooms'], 
@@ -39,9 +40,9 @@ const Rooms = () => {
                 <div className=' col-span-7'>
                     
                 <div className='py-3 border mb-3'>
-                            <select name="" id="" className='border ml-3 p-2'>
-                                <option value="ace">High to Low</option>
-                                <option value="ace">Low to High</option>
+                            <select onChange={(e)=> setPrice(e.target.value)} name="" id="" className='border ml-3 p-2'>
+                                <option value="asc">High to Low</option>
+                                <option value="desc">Low to High</option>
                             </select>
                         </div>
                     <div className='grid grid-cols-2 gap-5'>
