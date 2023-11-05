@@ -6,7 +6,6 @@ import Marquee from "react-fast-marquee";
 const SpecialOffers = () => {
 
     const {data, isLoading} = useRooms()
-    console.log(data);
 
     return (
         <div className='bg-zinc-200 my-8 md:py-20'>
