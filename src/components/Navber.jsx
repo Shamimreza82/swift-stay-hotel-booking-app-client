@@ -15,12 +15,12 @@ const Navber = () => {
     }
 
   return (
-    <div className="bg-slate-200">
+    <div className="w-full shadow-xl">
       <div className="drawer max-w-7xl m-auto">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
           {/* Navbar */}
-          <div className="w-full navbar bg-base-300">
+          <div className="w-full navbar">
             <div className="flex-none lg:hidden">
               <label
                 htmlFor="my-drawer-3"
@@ -42,7 +42,7 @@ const Navber = () => {
                 </svg>
               </label>
             </div>
-            <div className="flex-1 px-2 mx-2">SwiftStay</div>
+            <p className="flex-1 px-2 mx-2 text-2xl font-black text-green-500 drop-shadow-xl">SwiftStay</p>
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal">
                 {/* Navbar menu content here */}
@@ -124,7 +124,7 @@ const Navber = () => {
             </div>
           </div>
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side z-50">
           <label
             htmlFor="my-drawer-3"
             aria-label="close sidebar"

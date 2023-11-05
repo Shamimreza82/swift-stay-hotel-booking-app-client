@@ -1,28 +1,23 @@
-import React from "react";
+import Navber from './Navber';
+import video from '../assets/video.mp4'
+
+
+
 
 const Banner = () => {
   return (
-    <div className="max-w-7xl m-auto">
-      <div
-        className="hero"
-        style={{
-          backgroundImage:
-            "url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)",
-        }}
-      >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-            <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
-            <button className="btn btn-primary">Get Started</button>
-          </div>
-        </div>
+    <div className="relative z-0 m-auto">
+      <div className='md:absolute z-30 w-full'>
+        <Navber></Navber>
       </div>
+          <div className="">
+          <div className="relative">
+             <video src={video} className="w-full  brightness-50  " width="1080" height="500" autoPlay loop>
+             </video>
+              <p className="absolute md:text-white object-cover top-72  flex justify-center  md:text-5xl">Your Swift Solution to Effortless Hotel Bookings and Unforgettable Stays</p>
+          </div>
+          
+          </div>
     </div>
   );
 };
