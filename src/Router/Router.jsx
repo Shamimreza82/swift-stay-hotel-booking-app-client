@@ -8,6 +8,8 @@ import Rooms from "../pages/Rooms/Rooms";
 import MyBookings from "../pages/MyBookings/MyBookings";
 import PrivateRoute from "../pages/PrivateRoute";
 import RoomDetailes from "../pages/Rooms/RoomDetailes";
+import Reviews from "../pages/Reviews/Reviews";
+import BookingDetiles from "../pages/Rooms/BookingDetiles";
 
 const router = createBrowserRouter([
     {
@@ -18,8 +20,17 @@ const router = createBrowserRouter([
             {
                 path: '/', 
                 element: <Home></Home>,
+                loader: ()=> fetch('http://localhost:5000/api/v1/rooms')
                 
+            }, 
+            {
+                path: '/bookingDetiles/:id', 
+                element: <PrivateRoute>
+                    <BookingDetiles></BookingDetiles>,
+                </PrivateRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/api/v1/room/${params.id}`)
             }
+            
         ]
     }, 
     {
@@ -42,9 +53,15 @@ const router = createBrowserRouter([
     },
     {
         path: '/roomsDeities/:id', 
-        element: <RoomDetailes></RoomDetailes>,
+        element: 
+            <RoomDetailes></RoomDetailes>,
         loader: ({params}) => fetch(`http://localhost:5000/api/v1/room/${params.id}`)
         
+    }, 
+    {
+        path: '/reviews', 
+        element: <Reviews></Reviews>
+            
     }
 ])
 

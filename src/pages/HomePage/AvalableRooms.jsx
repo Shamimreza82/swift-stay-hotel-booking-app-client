@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import useRooms from "../../Hooks/useRooms";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AvalableRooms = () => {
-  const { data } = useRooms();
+
+    const data = useLoaderData()
 
   console.log(data);
 

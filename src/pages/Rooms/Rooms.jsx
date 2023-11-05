@@ -22,6 +22,7 @@ const Rooms = () => {
 
   console.log(roomsAll);
 
+
   // const {data: rooms, isLoading, error, refetch} = useQuery({
   //     queryKey: ['rooms',price ],
   //     queryFn: async ()=> {

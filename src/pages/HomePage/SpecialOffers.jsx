@@ -1,18 +1,16 @@
-import React from 'react'
-import img from '../../assets/images/1289.jpg'
-import useRooms from '../../Hooks/useRooms';
 import Marquee from "react-fast-marquee";
+import { useLoaderData } from "react-router-dom";
 
 const SpecialOffers = () => {
 
-    const {data, isLoading} = useRooms()
+    const rooms = useLoaderData()
+    console.log(rooms);
 
-
-    if(isLoading){
-        return <div className='flex justify-center items-center '>
-            <span className="loading loading-spinner loading-md "></span>
-        </div>
-    }
+    // if(isLoading){
+    //     return <div className='flex justify-center items-center '>
+    //         <span className="loading loading-spinner loading-md "></span>
+    //     </div>
+    // }
 
     return (
         <div className='bg-zinc-200 my-8 md:py-20'>
@@ -26,7 +24,7 @@ const SpecialOffers = () => {
             <Marquee>
             <div className='flex gap-6'>
                     {
-                        data?.map(images => 
+                        rooms?.map(images => 
 
                         <div key={images._id}>
                             <div className='relative '>

@@ -10,7 +10,7 @@ const Navber = () => {
     const handleLogout = () => {
         logeOut()
         .then(() => {
-            navigate('/')
+            navigate('/login')
         } )
     }
 
