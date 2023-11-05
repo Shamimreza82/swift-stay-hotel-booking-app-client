@@ -4,16 +4,29 @@ import axios from 'axios';
 import { Link, useLoaderData, useLocation, useParams } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import { useEffect, useState } from 'react';
 
 const RoomDetailes = () => {
 
     const {user} = useAuth()
-
     const {id} = useParams()
     const room = useLoaderData()
+    const [booked, setBooked] =useState([])
     let count = 1
+  
+    useEffect(()=> {
+        axios.get('http://localhost:5000/booking')
+        .then(res => {
+            setBooked(res.data)
+        })
+    }, [])
 
   
+    
+    
+    const bookedName = booked.map(book => book.roomType == room.roomType)
+    console.log(bookedName);
+
 
 
     const {data, isLoading, error, refetch} = useQuery({
@@ -23,19 +36,16 @@ const RoomDetailes = () => {
            return res
         }
     })
+
+
  
 
-   const {_id, roomType, description,pricePerNight, roomSize, availability, roomImages, specialOffers, features } = room
+   const {_id, roomType, description, pricePerNight, roomSize, availability, roomImages, specialOffers, features } = room
 
    if(isLoading){
     return <div>Loading........</div>
 }
 
-    const handleform = () => {
-
-    }
-
-    console.log(user?.email);
 
     const handelbooking = () => {
 
@@ -45,9 +55,14 @@ const RoomDetailes = () => {
             email: user?.email,
             roomImages: roomImages[0], 
             pricePerNight: pricePerNight, 
-            availability: availability
+            availability: false
         } 
 
+        if(bookedName.includes(true)){
+            return alert('ddddd')
+        }
+
+        
         axios.post('http://localhost:5000/api/v1/booking',booking, {withCredentials: true} )
         .then(res => {
             console.log(res.data);
@@ -59,6 +74,13 @@ const RoomDetailes = () => {
                   )
             }
         })
+
+       
+    }
+
+    const handlebookNow = () => {
+
+        
     }
 
 
@@ -99,8 +121,10 @@ const RoomDetailes = () => {
                     <p>Room Side: {roomSize}</p>
                     <p> Availability: {availability ? "Available": "Unavailable"}</p>
 
+                        
+                    <button onClick={handelbooking} className='btn'>Book Now</button>
 
-            {/* Modal  */}
+{/*            
                     <button  className="btn" onClick={()=>document.getElementById('my_modal_5').showModal()}>Book Now</button>
                     <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                     <div className="modal-box">
@@ -111,13 +135,17 @@ const RoomDetailes = () => {
                         <div className="modal-action">
                         <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
-                            <button className="btn">Book Leter</button>
-                            <button onClick={handelbooking}  className="btn">Prossed</button>
-                        </form>
+                            {/* <button className="btn">Book Leter</button>
+                            <button className="btn">Prossed</button>
+                        </form> */}
                             {/* <button  className='btn'>Pressed</button> */}
-                        </div>
+                        {/* </div>
                     </div>
-                    </dialog>
+                    </dialog> */} 
+
+
+
+
                 </div>
                 
             </div>
