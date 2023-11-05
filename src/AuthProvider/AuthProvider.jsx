@@ -2,7 +2,7 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import React, { createContext, useEffect, useState} from 'react';
 import auth from '../firebase.Config/firebase.Config';
-import useAxios from '../Hooks/useAxios';
+import useAxios from '../Hooks/useAxiosRoute';
 
 
 
@@ -40,6 +40,11 @@ const AuthProvider = ({children}) => {
             setIslodeing(false)
             if(currentUser){
                 axios.post('/auth/access-token', {email: userEmail}, {withCredentials: true})
+                .then(res => {
+                    console.log(res.data);
+                })
+            } else {
+                axios.post('/logout', {email: userEmail}, {withCredentials: true} )
                 .then(res => {
                     console.log(res.data);
                 })
