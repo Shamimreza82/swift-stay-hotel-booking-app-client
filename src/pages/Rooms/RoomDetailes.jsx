@@ -9,6 +9,7 @@ import {
 
 import { useEffect, useState } from "react";
 import moment from "moment";
+import Footer from "../HomePage/Footer";
 
 const RoomDetailes = () => {
  
@@ -50,7 +51,7 @@ const RoomDetailes = () => {
       <Navber></Navber>
       <div className="max-w-7xl m-auto text-center text-4xl py-10 border-b border-t mt-16">
         <p>
-          <span className="font-bold">Discover Our Exquisite Collection</span>{" "}
+          <span className="font-bold text-zinc-800">Discover Our Exquisite Collection</span>{" "}
           <br />{" "}
           <span className="text-2xl">of Distinguished Suites and Rooms</span>
         </p>
@@ -64,12 +65,12 @@ const RoomDetailes = () => {
             <img className="h-full" src={roomImages[1]} alt="" />
             <img className="h-full" src={roomImages[2]} alt="" />
           </div>
-          <p className="text-2xl py-2 font-bold">{roomType}</p>
-          <p>{description}</p>
-          <div className="grid md:grid-cols-3 gap-4 py-6">
+          <p className="text-2xl py-6 font-bold">{roomType}</p>
+          <p className="text-gray-500">{description}</p>
+          <div className="grid md:grid-cols-3 gap-4 py-10">
             {features.map((feature) => (
-              <div key={feature} className="bg-green-300 rounded-md">
-                <p className="py-3 pl-2">{feature}</p>
+              <div key={feature} className="bg-green-500 rounded-md">
+                <p className="py-3 pl-2 text-yellow-50">{feature}</p>
               </div>
             ))}
           </div>
@@ -79,8 +80,9 @@ const RoomDetailes = () => {
         {/* right side */}
 
         <form onSubmit={handlesubmitBooking} className="col-span-4  " action="">
-          <div className="p-8 bg-slate-300 rounded-md space-y-3">
-            <p className="font-bold text-3xl">{roomType}</p>
+          
+          <div className="p-8 bg-slate-100 rounded-md space-y-3">
+            <p className="font-bold text-2xl">{roomType}</p>
             <p>Price Per Night: ${pricePerNight}</p>
             <p>Room Side: {roomSize}</p>
             <p> Availability: {availability ? "Available" : "Unavailable"}</p>
@@ -93,6 +95,7 @@ const RoomDetailes = () => {
             </Link>
           </div>
           <form className=" mt-6" action="">
+          <p>All reviews</p>
             <div>
             {
             rating.map(ratin => 
@@ -100,18 +103,18 @@ const RoomDetailes = () => {
             <div className="flex gap-4">
               <img className="rounded-full h-16" src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlMjFfM2RfcmVuZGVyX2NoYXJhY3Rlcl9vZl9hX3N0cmVzc2VkX2J1c2luZXNzX21hbl9kMDk1ZDQ3NC0zYmI0LTQ0MzItYTJhYS1lMDZhMTg2MjAzZDUucG5n.png" alt="" />
               <div>
-                    <p>{ratin.name}</p>
-                    <div className="rating rating-md">
+                    <p className="font-bold text-zinc-800">{ratin.name}</p>
+                    <div className="rating rating-sm">
                     <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
                     <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" checked />
                     <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
                     <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
                     <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
                   </div>
-                  <p className="text-sm">{moment().format('MMMM Do YYYY, h:mm:ss a')}</p>
+                  <p className="text-sm text-gray-500">{moment().format('MMMM Do YYYY, h:mm:ss a')}</p>
               </div>
             </div>
-              <p className="ml-20 mt-6">{ratin.text}</p>
+              <p className="ml-20 mt-6 text-sm">{ratin.text}</p>
           </div>
               
               )
@@ -121,6 +124,7 @@ const RoomDetailes = () => {
         </form>
        
       </div>
+      <Footer></Footer>
     </div>
   );
 };

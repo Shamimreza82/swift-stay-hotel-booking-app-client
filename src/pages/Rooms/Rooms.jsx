@@ -45,7 +45,7 @@ const Rooms = () => {
     <div>
       <Navber></Navber>
       <p className="max-w-7xl m-auto text-center py-5 md:text-2xl font-bold mt-6">
-        <span className="md:text-3xl text-xl">Explore Our Available Rooms</span>{" "}
+        <span className="md:text-4xl text-zinc-800 text-xl">Explore Our Available Rooms</span>
         <br /> for Your Perfect Getaway
       </p>
       <p className="max-w-4xl m-auto text-sm text-center ">
@@ -53,12 +53,12 @@ const Rooms = () => {
         each designed to cater to your unique preferences and needs. Whether
         you're seeking a cozy retreat or an indulgent escape,
       </p>
-      <div className=" border mb-3 rounded-md max-w-7xl m-auto mt-5">
+      <div className=" border border-green-500 mb-3 p-1 rounded-md max-w-7xl m-auto mt-5">
         <select
           onChange={handlePriceSet}
           name=""
           id=""
-          className="border py-3 rounded-md text-sm"
+          className="border py-2 rounded-md text-sm p-2"
         >
           <option value="asc">Low to high</option>
           <option value="desc">High to low</option>
@@ -90,9 +90,9 @@ const Rooms = () => {
                   />
                   {/* <p className="absolute bottom-5 text-xl text-red-600 font-bold shadow-2xl p-2">
                   {rooms.specialOffers ? `Discount: ${rooms.specialOffers.discountPercentage} %`:''}</p> */}
-                  <div className="flex justify-between py-3 px-1 bg-slate-200 rounded-b-md ">
-                    <p className="font-bold text-gray-700">{rooms?.roomType}</p>
-                    <p>${rooms?.pricePerNight}</p>
+                  <div className="flex justify-between py-3 px-4 bg-slate-100 rounded-b-md  border-b-green-600 border">
+                    <p className="font-bold text-zinc-800">{rooms?.roomType}</p>
+                    <p className="text-red-600 font-bold text-sm">${rooms?.pricePerNight}</p>
                   </div>
                 </div>
               </Link>
