@@ -11,8 +11,8 @@ const AvalableRooms = () => {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-col text-center w-full mb-20">
-          <h1 className="sm:text-3xl text-xl font-medium title-font mb-4 text-gray-900">
+        <div className="flex flex-col text-center w-full mb-12">
+          <h1 className="text-3xl font-bold text-center title-font mb-4 text-gray-900">
             Discover Our Available Rooms Today
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">

@@ -16,7 +16,7 @@ const Navber = () => {
     }
 
   return (
-    <div className="w-full shadow-xl">
+    <div className="w-full shadow-md bg-zinc-200">
       <div className="drawer max-w-7xl m-auto">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
@@ -48,80 +48,107 @@ const Navber = () => {
                <img className='w-40' src={logo} alt="" />
            </div>
             <div className="flex-none hidden lg:block">
-              <ul className="menu menu-horizontal">
+              <ul className="menu menu-horizontal flex justify-center gap-4">
                 {/* Navbar menu content here */}
-                <li>
-                    <NavLink
+               
+                    <NavLink 
                     to="/"
-                    className={({ isActive, isPending, isTransitioning }) =>
+                    className={({ isActive, isPending, isTransitioning })  =>
                     [
-                        isPending ? "pending" : "",
-                        isActive ? "active" : "",
+                        isPending ? "" : "",
+                        isActive ? "underline text-green-500" : "",
                         isTransitioning ? "transitioning" : "",
                     ].join(" ")
                     }
                 >
                     Home
                 </NavLink>
-                </li>
-                <li>
+          
+             
                     <NavLink
                     to="/rooms"
                     className={({ isActive, isPending, isTransitioning }) =>
                     [
-                        isPending ? "pending" : "",
-                        isActive ? "active" : "",
+                        isPending ? "" : "",
+                        isActive ? "underline text-green-500" : "",
                         isTransitioning ? "transitioning" : "",
                     ].join(" ")
                     }
                 >
                     Rooms
                 </NavLink>
-                </li>
-                <li>
+               
+           
                     <NavLink
                     to="/myBookings"
                     className={({ isActive, isPending, isTransitioning }) =>
                     [
                         isPending ? "pending" : "",
-                        isActive ? "active" : "",
+                        isActive ? "underline text-green-500" : "",
                         isTransitioning ? "transitioning" : "",
                     ].join(" ")
                     }
                 >
                    My Bookings
                 </NavLink>
-                </li>
+               
+                    <NavLink
+                    to="/about"
+                    className={({ isActive, isPending, isTransitioning }) =>
+                    [
+                        isPending ? "pending" : "",
+                        isActive ? "underline text-green-500" : "",
+                        isTransitioning ? "transitioning" : "",
+                    ].join(" ")
+                    }
+                >
+                   About Us
+                </NavLink>
+             
+               
+                    <NavLink
+                    to="/contact"
+                    className={({ isActive, isPending, isTransitioning }) =>
+                    [
+                        isPending ? "pending" : "",
+                        isActive ? "underline text-green-500" : "",
+                        isTransitioning ? "transitioning" : "",
+                    ].join(" ")
+                    }
+                >
+                   Contact Us
+                </NavLink>
+              
                 {
-                    user ? <li>
+                    user ? 
                     <NavLink
                     onClick={handleLogout}
                     to="/messages"
                     className={({ isActive, isPending, isTransitioning }) =>
                     [
                         isPending ? "pending" : "",
-                        isActive ? "active" : "",
+                        isActive ? "underline text-green-500" : "",
                         isTransitioning ? "transitioning" : "",
                     ].join(" ")
                     }
                 >
                    Logout
                 </NavLink>
-                </li> :
-                <li>
+                :
+                
                 <NavLink
                 to="/login"
                 className={({ isActive, isPending, isTransitioning }) =>
                 [
                     isPending ? "pending" : "",
-                    isActive ? "active" : "",
+                    isActive ? "underline text-green-500" : "",
                     isTransitioning ? "transitioning" : "",
                 ].join(" ")
                 }
             >
                Login
             </NavLink>
-            </li>
+            
                 }
                 
               </ul>

@@ -4,18 +4,21 @@ import Testimonials from './HomePage/Testimonials';
 import Newsletter from './HomePage/Newsletter';
 import Footer from './HomePage/Footer';
 import AvalableRooms from './HomePage/AvalableRooms';
+import Banner2 from '../components/Banner2';
+import { CarouselCustomArrows } from '../components/CarouselCustomArrows';
 
 
 const Home = () => {
     return (
         <div>
 
-            <Banner></Banner>
+          <Banner></Banner>
             <div className=''>
                 <SpecialOffers></SpecialOffers>
-                <Newsletter></Newsletter>
                 <AvalableRooms></AvalableRooms>
+                <Newsletter></Newsletter>
                 <Testimonials></Testimonials>
+                
                 <Footer></Footer>
             </div>
         </div>

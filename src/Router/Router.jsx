@@ -11,6 +11,8 @@ import RoomDetailes from "../pages/Rooms/RoomDetailes";
 import Reviews from "../pages/Reviews/Reviews";
 import BookingDetiles from "../pages/Rooms/BookingDetiles";
 import UpdateBooking from "../pages/MyBookings/UpdateBooking";
+import AboutUs from "../pages/AboutUs";
+import ContactUs from "../pages/ContactUs";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
                     <BookingDetiles></BookingDetiles>,
                 </PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/api/v1/room/${params.id}`)
+            }, 
+            {
+                path: '/about', 
+                element: <AboutUs></AboutUs>,
+            }, 
+            {
+                path: '/contact', 
+                element: <ContactUs></ContactUs>,
             }
             
         ]

@@ -13,12 +13,10 @@ const SpecialOffers = () => {
     // }
 
     return (
-        <div className='bg-zinc-200 my-8 md:py-20'>
-            <div className='flex max-w-7xl m-auto'>
-                <div className='flex justify-center'>
-                    <p className='text-4xl pb-6'>Our Spacial Offer</p>
+        <div className='bg-zinc-200  md:py-20 '  >
+                <div className=''>
+                    <p className='text-4xl pb-6 font-bold text-center'>Our Spacial Offer</p>
                 </div>
-            </div>
             
             <div >
             <Marquee>
