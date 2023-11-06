@@ -23,26 +23,26 @@ const AvalableRooms = () => {
             for every discerning traveler.
           </p>
         </div>
-        <div className="flex flex-wrap -m-4 ">
+        <div className=" grid md:grid-cols-4">
           {data?.map((rooms) => (
             <div
               key={rooms._id}
-              className="lg:w-1/3 sm:w-1/2 p-4 hover:scale-105 duration-200"
+              className="p-4 hover:scale-105 duration-200"
             >
-              <div className="flex relative">
+              <div className="flex relative ">
                 <img
                   alt="gallery"
-                  className="absolute inset-0 w-full h-full object-cover object-center brightness-50 hover:brightness-95 "
+                  className="absolute inset-0 w-full h-full object-cover object-center "
                   src={rooms.roomImages[2]}
                 />
 
-                <div className="px-8 py-10 flex justify-center items-center  relative h-48 z-10 w-full border-4 border-gray-200 duration-300  opacity-0 hover:opacity-100">
+                <div className="px-8 py-10 flex justify-center items-center  relative h-48 z-10 w-full border-4 border-gray-200 duration-300  opacity-0 hover:opacity-100 ">
                
-                  <div>
-                    <h2 className="tracking-widest text-xl title-font font-medium text-white mb-1 dro">
+                  <div className="hover:shadow-xl">
+                    <h2 className="tracking-widest text-xl title-font font-medium text-green-400 mb-1 drop-shadow-2xl dro">
                       {rooms.roomType}
                     </h2>
-                    <Link to={`/roomsDeities/${rooms._id}`} className=" btn">
+                    <Link to={`/roomsDeities/${rooms._id}`} className="text-green-400 text-sm border py-1 px-2 shadow-2xl">
                       Book Now
                     </Link>
                   </div>

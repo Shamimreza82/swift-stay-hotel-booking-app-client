@@ -16,6 +16,7 @@ const Home = () => {
             <div className=''>
                 <SpecialOffers></SpecialOffers>
                 <AvalableRooms></AvalableRooms>
+
                 <Newsletter></Newsletter>
                 <Testimonials></Testimonials>
                 
