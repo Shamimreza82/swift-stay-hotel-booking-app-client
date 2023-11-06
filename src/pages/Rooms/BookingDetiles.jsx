@@ -166,12 +166,13 @@ const BookingDetiles = () => {
             </div>
             </div>
       {/* Ratting */}
-
-          <div className="bg-slate-100 mt-5 p-4">
+      {
+            rating.map(ratin => 
+              <div key={ratin._id} className="bg-slate-100 mt-5 p-4  rounded-md">
             <div className="flex gap-4">
               <img className="rounded-full h-16" src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlMjFfM2RfcmVuZGVyX2NoYXJhY3Rlcl9vZl9hX3N0cmVzc2VkX2J1c2luZXNzX21hbl9kMDk1ZDQ3NC0zYmI0LTQ0MzItYTJhYS1lMDZhMTg2MjAzZDUucG5n.png" alt="" />
               <div>
-                    <p> Name </p>
+                    <p>{ratin.name}</p>
                     <div className="rating rating-md">
                     <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
                     <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" checked />
@@ -182,11 +183,17 @@ const BookingDetiles = () => {
                   <p className="text-sm">{moment().format('MMMM Do YYYY, h:mm:ss a')}</p>
               </div>
             </div>
-              <p className="ml-16 mt-6">AAAAAAAAAAAAAAAAAAAA</p>
+              <p className="ml-20 mt-6">{ratin.text}</p>
           </div>
+              
+              )
+          }
+             
 
         </div>
+        
       </div>
+       
     </div>
   );
 };

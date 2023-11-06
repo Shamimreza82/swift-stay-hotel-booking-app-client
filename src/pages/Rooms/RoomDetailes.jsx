@@ -1,35 +1,30 @@
 import Navber from "../../components/Navber";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import {
   Link,
   useLoaderData,
-  useLocation,
-  useNavigation,
+
 } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
-import Swal from "sweetalert2";
+
+
 import { useEffect, useState } from "react";
+import moment from "moment";
 
 const RoomDetailes = () => {
-  const { user } = useAuth();
+ 
   const room = useLoaderData();
-  const [booked, setBooked] = useState([]);
-  let count = 1;
-  const navigate = useNavigation();
-  const [date, setDate] = useState(0);
-  console.log(date);
-  // const location = useLocation()
+  const [rating, setrating] = useState([])
+  
+  useEffect(() => {
+    axios.get("http://localhost:5000/ratings")
+    .then((res) => {
+      setrating(res.data);
+    });
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:5000/booking").then((res) => {
-  //     setBooked(res.data);
-  //   });
-  // }, []);
 
-  // const bookedName = booked.map((book) => book.roomType == room.roomType);
-  // console.log(bookedName);
+    console.log(rating);
 
+  }, []);
   const {
     _id,
     roomType,
@@ -42,36 +37,7 @@ const RoomDetailes = () => {
     features,
   } = room;
 
-  // const handelbooking = () => {
-  //   const booking = {
-  //     name: user?.displayName,
-  //     roomType: roomType,
-  //     email: user?.email,
-  //     roomImages: roomImages[0],
-  //     pricePerNight: pricePerNight,
-  //     availability: false,
-  //     description,
-  //     roomSize,
-  //     specialOffers,
-  //     features,
-  //   };
-
-  //   if (bookedName.includes(true)) {
-  //     return Swal.fire("Already Booked", "Try another ", "error");
-  //   }
-
-  //   axios
-  //     .post("http://localhost:5000/api/v1/booking", booking, {
-  //       withCredentials: true,
-  //     })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       if (res.data.acknowledged) {
-  //         Swal.fire("Booking Successful", "You clicked my booking ", "success");
-
-  //       }
-  //     });
-  // };
+  
 
   const handlesubmitBooking = (e) => {
     e.preventDefault();
@@ -107,17 +73,7 @@ const RoomDetailes = () => {
               </div>
             ))}
           </div>
-          {/* <p> <strong>Price Per Night: </strong>${pricePerNight}</p>
-          <p> <strong>Room Side:</strong> {roomSize}</p>
-          <p>
-            {" "}
-            <strong>Room Availability:</strong> {availability ? "Available" : "Unavailable"}
-          </p>
-          <p className="text-red-500">
-            {specialOffers
-              ? `Discount: ${specialOffers.discountPercentage} %`
-              : ""}
-          </p> */}
+        
         </div>
 
         {/* right side */}
@@ -128,10 +84,6 @@ const RoomDetailes = () => {
             <p>Price Per Night: ${pricePerNight}</p>
             <p>Room Side: {roomSize}</p>
             <p> Availability: {availability ? "Available" : "Unavailable"}</p>
-
-            {/* <input type="submit">
-            Book Now</input>  */}
-
             <Link
               className="btn bg-green-500 border-none text-white"
               to={`/bookingDetiles/${_id}`}
@@ -140,61 +92,34 @@ const RoomDetailes = () => {
               Book Now
             </Link>
           </div>
-          <form className="bg-slate-400 mt-6" action="">
+          <form className=" mt-6" action="">
             <div>
-              <form className="card-body">
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="email"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Password</span>
-                  </label>
-                  <input
-                    type="password"
-                    placeholder="password"
-                    className="input input-bordered"
-                    required
-                  />
-                  <label className="label">
-                    <a href="#" className="label-text-alt link link-hover">
-                      Forgot password?
-                    </a>
-                  </label>
-                </div>
-                <div className="form-control mt-6">
-                  <button className="btn btn-primary">Login</button>
-                </div>
-              </form>
+            {
+            rating.map(ratin => 
+              <div key={ratin._id} className="bg-slate-100 mt-5 p-4  rounded-md">
+            <div className="flex gap-4">
+              <img className="rounded-full h-16" src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlMjFfM2RfcmVuZGVyX2NoYXJhY3Rlcl9vZl9hX3N0cmVzc2VkX2J1c2luZXNzX21hbl9kMDk1ZDQ3NC0zYmI0LTQ0MzItYTJhYS1lMDZhMTg2MjAzZDUucG5n.png" alt="" />
+              <div>
+                    <p>{ratin.name}</p>
+                    <div className="rating rating-md">
+                    <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
+                    <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" checked />
+                    <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
+                    <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
+                    <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
+                  </div>
+                  <p className="text-sm">{moment().format('MMMM Do YYYY, h:mm:ss a')}</p>
+              </div>
+            </div>
+              <p className="ml-20 mt-6">{ratin.text}</p>
+          </div>
+              
+              )
+          }
             </div>
           </form>
         </form>
-        {/*            
-                    <button  className="btn" onClick={()=>document.getElementById('my_modal_5').showModal()}>Book Now</button>
-                    <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                    <div className="modal-box">
-                        <h3 className="font-bold text-lg">{roomType}</h3>
-                        <img className='rounded-lg' src={roomImages[0]} alt="" />
-                        <p>Price Per Night: {pricePerNight}</p>
-                    <p>Room Side: {roomSize}</p>
-                        <div className="modal-action">
-                        <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-        {/* <button className="btn">Book Leter</button>
-                            <button className="btn">Prossed</button>
-                        </form> */}
-        {/* <button  className='btn'>Pressed</button> */}
-        {/* </div>
-                    </div>
-                    </dialog> */}
+       
       </div>
     </div>
   );

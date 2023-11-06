@@ -11,17 +11,13 @@ import { CarouselCustomArrows } from '../components/CarouselCustomArrows';
 const Home = () => {
     return (
         <div>
-
-          <Banner></Banner>
-            <div className=''>
+                <Banner></Banner>
                 <SpecialOffers></SpecialOffers>
                 <AvalableRooms></AvalableRooms>
-
                 <Newsletter></Newsletter>
                 <Testimonials></Testimonials>
-                
                 <Footer></Footer>
-            </div>
+               
         </div>
     );
 };
