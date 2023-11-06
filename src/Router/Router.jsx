@@ -10,6 +10,7 @@ import PrivateRoute from "../pages/PrivateRoute";
 import RoomDetailes from "../pages/Rooms/RoomDetailes";
 import Reviews from "../pages/Reviews/Reviews";
 import BookingDetiles from "../pages/Rooms/BookingDetiles";
+import UpdateBooking from "../pages/MyBookings/UpdateBooking";
 
 const router = createBrowserRouter([
     {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
         path: '/reviews', 
         element: <Reviews></Reviews>
             
+    }, 
+    {
+        path: '/updateBooking/:id', 
+        element: <UpdateBooking></UpdateBooking>
     }
 ])
 

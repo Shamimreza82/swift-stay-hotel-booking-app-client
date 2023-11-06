@@ -1,42 +1,32 @@
 import Navber from "../../components/Navber";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Link, useLoaderData, useLocation } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useNavigation } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
-import PrivateRoute from "../PrivateRoute";
+
 
 const RoomDetailes = () => {
   const { user } = useAuth();
   const room = useLoaderData();
   const [booked, setBooked] = useState([]);
   let count = 1;
-  const location = useLocation()
+  const navigate = useNavigation()
+  const [date, setDate] = useState(0)
+  console.log(date);
+  // const location = useLocation()
 
-  useEffect(() => {
-    axios.get("http://localhost:5000/booking").then((res) => {
-      setBooked(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("http://localhost:5000/booking").then((res) => {
+  //     setBooked(res.data);
+  //   });
+  // }, []);
 
-  const bookedName = booked.map((book) => book.roomType == room.roomType);
-  console.log(bookedName);
+  // const bookedName = booked.map((book) => book.roomType == room.roomType);
+  // console.log(bookedName);
 
-//   const {
-//     data: roomall,
-//     isLoading,
-//     error,
-//     refetch,
-//   } = useQuery({
-//     queryKey: ["rooms"],
-//     queryFn: async () => {
-//       const res = await axios.get("http://localhost:5000/booking");
-//       return res;
-//     },
-//   });
 
-//   console.log("Tanstak Quary", roomall?.data);
 
   const {
     _id,
@@ -51,32 +41,44 @@ const RoomDetailes = () => {
   } = room;
 
 
-  const handelbooking = () => {
-    const booking = {
-      name: user?.displayName,
-      roomType: roomType,
-      email: user?.email,
-      roomImages: roomImages[0],
-      pricePerNight: pricePerNight,
-      availability: false,
-    };
+  // const handelbooking = () => {
+  //   const booking = {
+  //     name: user?.displayName,
+  //     roomType: roomType,
+  //     email: user?.email,
+  //     roomImages: roomImages[0],
+  //     pricePerNight: pricePerNight,
+  //     availability: false,
+  //     description,
+  //     roomSize,
+  //     specialOffers,
+  //     features,
+  //   };
 
-    if (bookedName.includes(true)) {
-      return Swal.fire("Already Booked", "Try another ", "error");
-    }
+  //   if (bookedName.includes(true)) {
+  //     return Swal.fire("Already Booked", "Try another ", "error");
+  //   }
 
-    axios
-      .post("http://localhost:5000/api/v1/booking", booking, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.acknowledged) {
-          Swal.fire("Booking Successful", "You clicked my booking ", "success");
+  //   axios
+  //     .post("http://localhost:5000/api/v1/booking", booking, {
+  //       withCredentials: true,
+  //     })
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       if (res.data.acknowledged) {
+  //         Swal.fire("Booking Successful", "You clicked my booking ", "success");
          
-        }
-      });
-  };
+  //       }
+  //     });
+  // };
+
+
+  const handlesubmitBooking = (e) => {
+    e.preventDefault()
+    const date = e.target.date.value; 
+    console.log(date);
+   
+  }
 
   return (
     <div>
@@ -116,14 +118,20 @@ const RoomDetailes = () => {
 
         {/* right side */}
 
-        <form className="col-span-4 bg-slate-300" action="">
+        <form onSubmit={handlesubmitBooking} className="col-span-4 bg-slate-300" action="">
           <div >
             <p>{roomType}</p>
             <p>Price Per Night: {pricePerNight}</p>
             <p>Room Side: {roomSize}</p>
             <p> Availability: {availability ? "Available" : "Unavailable"}</p>
-            
-           <Link to={`/bookingDetiles/${_id}`}>Book Now</Link> 
+            <input onChange={(e)=> setDate(e.target.value)} className="block" type="date" name="date"  />
+            <input className="btn" type="submit" value="Book Now" />
+
+           {/* <input type="submit">
+            Book Now</input>  */}
+
+           <Link to={`/bookingDetiles/${_id}`} type="submit">
+            Book Now</Link> 
             
             
             </div>

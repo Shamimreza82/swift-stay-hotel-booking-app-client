@@ -5,10 +5,11 @@ import Newsletter from './HomePage/Newsletter';
 import Footer from './HomePage/Footer';
 import AvalableRooms from './HomePage/AvalableRooms';
 
+
 const Home = () => {
     return (
         <div>
-            
+
             <Banner></Banner>
             <div className=''>
                 <SpecialOffers></SpecialOffers>

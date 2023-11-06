@@ -1,6 +1,7 @@
 
 import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import logo from '../assets/images/Untitled-1.png'
 
 const Navber = () => {
     const navigate = useNavigate()
@@ -42,7 +43,10 @@ const Navber = () => {
                 </svg>
               </label>
             </div>
-            <p className="flex-1 px-2 mx-2 text-2xl font-black text-green-500 drop-shadow-xl">SwiftStay</p>
+            {/* <p className="flex-1 px-2 mx-2 text-2xl font-black text-green-500 drop-shadow-xl">SwiftStay</p> */}
+           <div className="flex-1 justify-between">
+               <img className='w-40' src={logo} alt="" />
+           </div>
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal">
                 {/* Navbar menu content here */}

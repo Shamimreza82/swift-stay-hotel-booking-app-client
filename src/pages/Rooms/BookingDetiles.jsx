@@ -6,14 +6,16 @@ import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import Navber from '../../components/Navber';
 
+
 const BookingDetiles = () => {
     const { user } = useAuth();
     const booking = useLoaderData()
     console.log(booking);
     const room = useLoaderData();
+    const [date, setDate] = useState(0)
 
 
-
+  console.log(date);
     const [booked, setBooked] = useState([]);
 
     useEffect(() => {
@@ -38,7 +40,8 @@ const BookingDetiles = () => {
       } = room;
 
 
-    const handelbooking = () => {
+    const handelbooking = (e) => {
+      e.preventDefault()
         const booking = {
           name: user?.displayName,
           roomType: roomType,
@@ -46,6 +49,11 @@ const BookingDetiles = () => {
           roomImages: roomImages[0],
           pricePerNight: pricePerNight,
           availability: false,
+          description,
+          roomSize,
+          specialOffers,
+          features,
+          date, 
         };
     
         if (bookedName.includes(true)) {
@@ -73,9 +81,13 @@ const BookingDetiles = () => {
         <div>
             <Navber></Navber>
 
-            <div>
-                <img className='h-40' src={roomImages} alt="" />
-                <button className='btn' onClick={handelbooking}>Proseed</button>
+            <div >
+              <form onSubmit={handelbooking} action="">
+                 <img className='h-40' src={roomImages} alt="" />
+                 <input type="date"  onChange={(e)=> setDate(e.target.value)} />
+                  <input className='btn' type="submit" value="Prosseed" />
+              </form>
+                
             </div>
         </div>
     );
