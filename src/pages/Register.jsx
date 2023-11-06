@@ -2,6 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import Navber from "../components/Navber";
+import Footer from "./HomePage/Footer";
+import logo from '../assets/images/Untitled-1.png'
+import amimation from '../assets/images/Animation - 1699310360279.json'
+import Lottie from "lottie-react";
+
 
 
 
@@ -35,15 +40,19 @@ const Register = () => {
   return (
     <div>
         <Navber></Navber>
-        <div className="container m-auto py-12">
-        <div className="hero">
-          <div className=" flex flex-col-reverse md:flex-row-reverse  items-center">
-            <div className="text-center lg:text-left bg-slate-400 md:w-[50%] ">
-              <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+        <div className="container m-auto py-20">
+        <div className="hero ">
+          <div className=" flex flex-col-reverse md:flex-row-reverse gap-28  items-center">
+            <div className="text-center lg:text-left  md:w-[50%] ">
+              <Lottie className="md:w-[400px] w-[300px]" animationData={amimation}></Lottie>
             </div>
-            <div className="bg-base-100 md:w-[40%]">
-              <form onSubmit={handleRegister} className="card-body ">
-                <p className="text-center text-3xl font-bold text-green-500">Account Register</p>
+            <div className="bg-base-100 md:w-[80%]">
+              <form onSubmit={handleRegister} className="card-body border rounded-md w-[400px]  ">
+                <div className="flex justify-center items-center">
+                   <img className="w-48 " src={logo}alt="" />
+                </div>
+               
+                <p className="text-center text-2xl font-bold text-zinc-700">Register</p>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Name</span>
@@ -86,16 +95,18 @@ const Register = () => {
                   </label>
                 </div>
                 <div className="form-control mt-6">
-                  <input type="submit" className="btn bg-green-500 hover:bg-slate-600 text-white" value='Register'></input>
+                  <input type="submit" className="btn bg-green-600 hover:bg-slate-600 text-white" value='Register'></input>
                 </div>
-              </form>
-              <div className="flex justify-center">
-                <Link to='/login' className="text-center pb-4"> Do you have an account? <span className="text-red-600 font-bold">Login</span></Link>
+                <div className="flex justify-center">
+                <Link to='/login' className="text-center mt-6 "> Do you have an account? <span className="text-red-600 font-bold">Login</span></Link>
               </div>
+              </form>
+              
             </div>
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

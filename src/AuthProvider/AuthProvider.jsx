@@ -1,11 +1,12 @@
 
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import React, { createContext, useEffect, useState} from 'react';
 import auth from '../firebase.Config/firebase.Config';
 import useAxios from '../Hooks/useAxiosRoute';
 
 
 
+const provider = new GoogleAuthProvider();
 
 export const AuthContext = createContext()
 const AuthProvider = ({children}) => {
@@ -24,6 +25,10 @@ const AuthProvider = ({children}) => {
     const loginUser = (email, password) => {
         setIslodeing(true)
         return signInWithEmailAndPassword (auth, email, password)
+    }
+
+    const googleLogin = () => {
+       return signInWithPopup(auth, provider)
     }
 
     const logeOut = () => {
@@ -63,7 +68,8 @@ const AuthProvider = ({children}) => {
         loginUser,
         user, 
         logeOut, 
-        isLodeing
+        isLodeing, 
+        googleLogin
      }
 
 

@@ -4,11 +4,17 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import Navber from "../components/Navber";
+import Footer from "./HomePage/Footer";
+import Lottie from "lottie-react";
+import amimation from '../assets/images/Animation - 1699309790212.json'
+import { FcGoogle } from "react-icons/fc";
+
+
 
 
 const Login = () => {
 
-    const {loginUser} = useAuth()
+    const {loginUser, googleLogin} = useAuth()
 
     const location = useLocation()
     const navigate = useNavigate()
@@ -29,20 +35,28 @@ const Login = () => {
         } catch (error) {
             console.log(error);
         }
-
     }
+
+const handlegoogle = () => {
+  googleLogin()
+  .then( resilt => {
+    console.log(resilt);
+    navigate(location?.state ? location.state : "/");
+  })
+ 
+}
 
 
   return (
     <div>
         <Navber></Navber>
-      <div className="container m-auto py-12">
+      <div className="container m-auto py-5 md:py-28">
         <div className="hero">
-          <div className=" flex flex-col-reverse md:flex-row-reverse  items-center">
-            <div className="text-center lg:text-left bg-slate-400 md:w-[50%] ">
-              <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+          <div className=" flex flex-col-reverse md:flex-row-reverse  items-center md:gap-40">
+            <div className="text-center lg:text-left  md:w-[50%] ">
+              <Lottie animationData={amimation} loop={true}></Lottie>
             </div>
-            <div className="bg-base-100 md:w-[40%]">
+            <div className="bg-base-100 border rounded-md md:w-[60%]">
               <form onSubmit={handleLoginUser} className="card-body ">
                 <p className="text-center text-3xl font-bold text-green-500">Please Login</p>
                 <div className="form-control">
@@ -78,13 +92,19 @@ const Login = () => {
                   <input type="submit" className="btn bg-green-500 hover:bg-slate-600 text-white" value='Login'></input>
                 </div>
               </form>
+              <div className="flex justify-center ">
+                  <button onClick={handlegoogle} className="flex gap-5 mb-3 -mt-3 bg-slate-100 hover:bg-slate-200 duration-200 py-2 px-4 rounded-full items-center ">
+                    <FcGoogle className="text-3xl "></FcGoogle>
+                    Login with google</button>
+                </div>
               <div className="flex justify-center">
-                <Link to='/register' className="text-center pb-4"> Do you have an account? <span className="text-red-600 font-bold">Register</span></Link>
+                <Link to='/register' className="text-center pb-4 text-sm"> Do you have an account? <span className="text-red-600 font-bold">Register</span></Link>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
