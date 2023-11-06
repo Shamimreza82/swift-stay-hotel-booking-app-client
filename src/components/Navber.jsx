@@ -16,7 +16,7 @@ const Navber = () => {
     }
 
   return (
-    <div className="w-full shadow-md bg-zinc-200">
+    <div className="w-full shadow-md bg-zinc-800 py-1">
       <div className="drawer max-w-7xl m-auto">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
@@ -30,9 +30,9 @@ const Navber = () => {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
+                  fill="none "
                   viewBox="0 0 24 24"
-                  className="inline-block w-6 h-6 stroke-current"
+                  className="inline-block w-6 h-6 stroke-current text-white"
                 >
                   <path
                     strokeLinecap="round"
@@ -48,15 +48,15 @@ const Navber = () => {
                <img className='w-40' src={logo} alt="" />
            </div>
             <div className="flex-none hidden lg:block">
-              <ul className="menu menu-horizontal flex justify-center gap-4">
+              <ul className="menu menu-horizontal flex justify-center gap-6">
                 {/* Navbar menu content here */}
                
                     <NavLink 
                     to="/"
                     className={({ isActive, isPending, isTransitioning })  =>
                     [
-                        isPending ? "" : "",
-                        isActive ? "underline text-green-500" : "",
+                        isPending ? "text-white" : " text-yellow-50 ",
+                        isActive ? "   border-b-2 border-green-500" : "hover:scale-110 duration-300",
                         isTransitioning ? "transitioning" : "",
                     ].join(" ")
                     }
@@ -69,8 +69,8 @@ const Navber = () => {
                     to="/rooms"
                     className={({ isActive, isPending, isTransitioning }) =>
                     [
-                        isPending ? "" : "",
-                        isActive ? "underline text-green-500" : "",
+                        isPending ? "" : "text-yellow-50 ",
+                        isActive ? "   border-b-2 border-green-500" : "hover:scale-110 duration-300",
                         isTransitioning ? "transitioning" : "",
                     ].join(" ")
                     }
@@ -83,8 +83,8 @@ const Navber = () => {
                     to="/myBookings"
                     className={({ isActive, isPending, isTransitioning }) =>
                     [
-                        isPending ? "pending" : "",
-                        isActive ? "underline text-green-500" : "",
+                        isPending ? "pending" : "text-yellow-50 ",
+                        isActive ? "   border-b-2 border-green-500" : "hover:scale-110 duration-300",
                         isTransitioning ? "transitioning" : "",
                     ].join(" ")
                     }
@@ -96,8 +96,8 @@ const Navber = () => {
                     to="/about"
                     className={({ isActive, isPending, isTransitioning }) =>
                     [
-                        isPending ? "pending" : "",
-                        isActive ? "underline text-green-500" : "",
+                        isPending ? "pending" : "text-yellow-50 ",
+                        isActive ? "   border-b-2 border-green-500" : "hover:scale-110 duration-300",
                         isTransitioning ? "transitioning" : "",
                     ].join(" ")
                     }
@@ -110,8 +110,8 @@ const Navber = () => {
                     to="/contact"
                     className={({ isActive, isPending, isTransitioning }) =>
                     [
-                        isPending ? "pending" : "",
-                        isActive ? "underline text-green-500" : "",
+                        isPending ? "pending" : "text-yellow-50 ",
+                        isActive ? "   border-b-2 border-green-500" : "hover:scale-110 duration-300",
                         isTransitioning ? "transitioning" : "",
                     ].join(" ")
                     }
@@ -126,8 +126,8 @@ const Navber = () => {
                     to="/messages"
                     className={({ isActive, isPending, isTransitioning }) =>
                     [
-                        isPending ? "pending" : "",
-                        isActive ? "underline text-green-500" : "",
+                        isPending ? "pending" : "text-yellow-50 ",
+                        isActive ? "   border-b-2 border-green-500" : "hover:scale-110 duration-300",
                         isTransitioning ? "transitioning" : "",
                     ].join(" ")
                     }
@@ -140,8 +140,8 @@ const Navber = () => {
                 to="/login"
                 className={({ isActive, isPending, isTransitioning }) =>
                 [
-                    isPending ? "pending" : "",
-                    isActive ? "underline text-green-500" : "",
+                    isPending ? "hover:scale-110" : "text-yellow-50 ",
+                    isActive ? "   border-b-2 border-green-500" : "hover:scale-110 duration-300",
                     isTransitioning ? "transitioning" : "",
                 ].join(" ")
                 }
@@ -161,25 +161,75 @@ const Navber = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu p-4 w-80 min-h-full bg-base-200">
+          <ul className="menu p-4 w-80 min-h-screen bg-base-200 z-50 space-y-3">
             {/* Sidebar content here ------------------------------ */}
-            <li>
-              <NavLink
-                to="/messages"
-                className={({ isActive, isPending, isTransitioning }) =>
-                  [
-                    isPending ? "pending" : "",
-                    isActive ? "active" : "",
-                    isTransitioning ? "transitioning" : "",
-                  ].join(" ")
-                }
-              >
-                Messages
-              </NavLink>
-            </li>
-            <li>
-              <a>Sidebar Item 2</a>
-            </li>
+                <img className="w-40" src={logo} alt="" />
+                   <NavLink 
+                    to="/"
+                    className={({ isActive, isPending, isTransitioning })  =>
+                    [
+                        isPending ? "" : "border pl-2 py-1 ",
+                        isActive ? "   border pl-2 py-1 border-green-500" : "hover:scale-110 duration-300",
+                        isTransitioning ? "transitioning" : "",
+                    ].join(" ")
+                    }
+                >
+                    Home
+                </NavLink>
+                <NavLink
+                    to="/rooms"
+                    className={({ isActive, isPending, isTransitioning }) =>
+                    [
+                      isPending ? "" : " border pl-2 py-1",
+                      isActive ? "   border pl-2 py-1 border-green-500" : "hover:scale-110 duration-300",
+                        isTransitioning ? "transitioning" : "",
+                    ].join(" ")
+                    }
+                >
+                    Rooms
+                </NavLink>
+               
+           
+                    <NavLink
+                    to="/myBookings"
+                    className={({ isActive, isPending, isTransitioning }) =>
+                    [
+                      isPending ? "" : " border pl-2 py-1",
+                      isActive ? "   border pl-2 py-1 border-green-500" : "hover:scale-110 duration-300",
+                        isTransitioning ? "transitioning" : "",
+                    ].join(" ")
+                    }
+                >
+                   My Bookings
+                </NavLink>
+               
+                    <NavLink
+                    to="/about"
+                    className={({ isActive, isPending, isTransitioning }) =>
+                    [
+                      isPending ? "" : " border pl-2 py-1",
+                      isActive ? "   border pl-2 py-1 border-green-500" : "hover:scale-110 duration-300",
+                        isTransitioning ? "transitioning" : "",
+                    ].join(" ")
+                    }
+                >
+                   About Us
+                </NavLink>
+             
+               
+                    <NavLink
+                    to="/contact"
+                    className={({ isActive, isPending, isTransitioning }) =>
+                    [
+                      isPending ? " " : "  border pl-2 py-1",
+                      isActive ? "   border pl-2 py-1 border-green-500" : "hover:scale-110 duration-300",
+                        isTransitioning ? "transitioning" : "",
+                    ].join(" ")
+                    }
+                >
+                   Contact Us
+                </NavLink>
+
           </ul>
         </div>
       </div>

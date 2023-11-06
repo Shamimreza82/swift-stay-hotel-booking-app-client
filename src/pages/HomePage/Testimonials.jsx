@@ -5,8 +5,8 @@ const Testimonials = () => {
         <div>
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-24 mx-auto">
-            <h1 className="text-3xl font-medium title-font text-gray-900 mb-12 text-center">Testimonials</h1>
-            <div className="flex flex-wrap -m-4">
+            <h1 className="md:text-4xl text-2xl font-bold title-font text-zinc-800 mb-12 text-center">Testimonials</h1>
+            <div className="flex flex-wrap -m-4 ">
             <div className="p-4 md:w-1/2 w-full">
                 <div className="h-full bg-gray-100 p-8 rounded">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="block w-5 h-5 text-gray-400 mb-4" viewBox="0 0 975.036 975.036">
