@@ -6,6 +6,7 @@ import Footer from "./HomePage/Footer";
 import logo from '../assets/images/Untitled-1.png'
 import amimation from '../assets/images/Animation - 1699310360279.json'
 import Lottie from "lottie-react";
+import { FcGoogle } from "react-icons/fc";
 
 
 
@@ -16,6 +17,7 @@ const Register = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [name, setName] = useState("")
+    const {googleLogin} = useAuth()
 
     const handleRegister = async e => {
         e.preventDefault()
@@ -37,6 +39,18 @@ const Register = () => {
     }
 
 
+
+    const handlegoogle = () => {
+      googleLogin()
+      .then( resilt => {
+        console.log(resilt);
+        navigate(location?.state ? location.state : "/");
+      })
+     
+    }
+    
+
+
   return (
     <div>
         <Navber></Navber>
@@ -46,8 +60,8 @@ const Register = () => {
             <div className="text-center lg:text-left  md:w-[50%] ">
               <Lottie className="md:w-[400px] w-[300px]" animationData={amimation}></Lottie>
             </div>
-            <div className="bg-base-100 md:w-[80%]">
-              <form onSubmit={handleRegister} className="card-body border rounded-md w-[400px]  ">
+            <div className="bg-base-100 md:w-[80%] border rounded-md ">
+              <form onSubmit={handleRegister} className="card-body rounded-md w-[400px]  ">
                 <div className="flex justify-center items-center">
                    <img className="w-48 " src={logo}alt="" />
                 </div>
@@ -60,7 +74,7 @@ const Register = () => {
                   <input
                     type="text"
                     placeholder="name"
-                    className="input input-bordered"
+                    className="input input-bordered "
                     onBlur={(e)=> setName(e.target.value)}
                 
                   />
@@ -94,14 +108,18 @@ const Register = () => {
                     </a>
                   </label>
                 </div>
-                <div className="form-control mt-6">
+                <div className="form-control ">
                   <input type="submit" className="btn bg-green-600 hover:bg-slate-600 text-white" value='Register'></input>
                 </div>
-                <div className="flex justify-center">
-                <Link to='/login' className="text-center mt-6 "> Do you have an account? <span className="text-red-600 font-bold">Login</span></Link>
-              </div>
               </form>
-              
+              <div className="flex justify-center ">
+                  <button onClick={handlegoogle} className="flex gap-5 mb-3 -mt-3 bg-slate-100 hover:bg-slate-200 duration-200 py-2 px-4 rounded-full items-center ">
+                    <FcGoogle className="text-3xl "></FcGoogle>
+                    Login with google</button>
+                </div>
+                <div className="flex justify-center">
+                <Link to='/login' className="text-center mb-2 text-sm"> Do you have an account? <span className="text-red-600 font-bold">Login</span></Link>
+              </div>
             </div>
           </div>
         </div>
