@@ -7,6 +7,8 @@ import Navber from "../../components/Navber";
 import moment from "moment/moment";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosRoute from "../../Hooks/useAxiosRoute";
+import { Helmet } from "react-helmet";
+import Footer from "../HomePage/Footer";
 
 
 const BookingDetiles = () => {
@@ -121,7 +123,7 @@ const BookingDetiles = () => {
   return (
     <div className="bg-gray-50">
       <Navber></Navber>
-
+      <Helmet> <title>SwiftStay | Booking Deities</title></Helmet>
       <div className="max-w-7xl m-auto grid md:grid-cols-12 md:gap-5 mt-7 ">
         <div className="md:col-span-8 bg-slate-200 rounded-md">
           <img className="rounded-md" src={roomImages} alt="" />
@@ -238,6 +240,7 @@ const BookingDetiles = () => {
           ))}
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

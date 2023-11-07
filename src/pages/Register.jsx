@@ -7,6 +7,7 @@ import logo from '../assets/images/Untitled-1.png'
 import amimation from '../assets/images/Animation - 1699310360279.json'
 import Lottie from "lottie-react";
 import { FcGoogle } from "react-icons/fc";
+import { Helmet } from "react-helmet";
 
 
 
@@ -52,7 +53,8 @@ const Register = () => {
 
 
   return (
-    <div>
+    <div className="bg-slate-50">
+      <Helmet> <title>SwiftStay | Register</title></Helmet>
         <Navber></Navber>
         <div className="container m-auto py-20">
         <div className="hero ">

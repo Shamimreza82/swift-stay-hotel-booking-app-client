@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import Footer from "../HomePage/Footer";
+import { Helmet } from "react-helmet";
 
 const Rooms = () => {
   const [roomsAll, setrRooms] = useState([]);
@@ -31,19 +32,6 @@ const Rooms = () => {
 
   console.log(reviews.length);
 
-
-  // const {data: rooms, isLoading, error, refetch} = useQuery({
-  //     queryKey: ['rooms',price ],
-  //     queryFn: async ()=> {
-  //        const res = await axios.get(`http://localhost:5000/api/v1/rooms?sortField=pricePerNight&sortOrder=${price}`)
-  //        return res
-  //     }
-  // })
-
-  // if(isLoading){
-  //     return <div>Loading........</div>
-  // }
-
   const handlePriceSet = (e) => {
     e.preventDefault();
     setPrice(e.target.value);
@@ -51,6 +39,7 @@ const Rooms = () => {
 
   return (
     <div className="bg-gray-50">
+      <Helmet> <title>SwiftStay | Rooms</title></Helmet>
       <Navber></Navber>
       <p className="max-w-7xl m-auto text-center py-5 md:text-2xl font-bold mt-6">
         <span className="md:text-4xl text-zinc-800 text-xl">Explore Our Available Rooms</span>

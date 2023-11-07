@@ -8,6 +8,7 @@ import Footer from "./HomePage/Footer";
 import Lottie from "lottie-react";
 import amimation from '../assets/images/Animation - 1699309790212.json'
 import { FcGoogle } from "react-icons/fc";
+import { Helmet } from "react-helmet";
 
 
 
@@ -48,7 +49,8 @@ const handlegoogle = () => {
 
 
   return (
-    <div>
+    <div className="bg-slate-50">
+      <Helmet> <title>SwiftStay | Login</title></Helmet>
         <Navber></Navber>
       <div className="container m-auto py-5 md:py-28">
         <div className="hero">

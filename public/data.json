@@ -80,14 +80,14 @@
       "features": ["Private terrace", "Personal hot tub", "Gourmet kitchen", "In-room entertainment system", "24/7 concierge service", "Luxury toiletries"]
     },
     {
-      "roomType": "Beachfront Villa",
-      "description": "Immerse yourself in the ultimate luxury and tranquility with our exclusive beachfront villas, offering a private and serene setting right on the beach. Indulge in personalized services and lavish amenities, ensuring an unforgettable and indulgent retreat away from the hustle and bustle of everyday life. Our beachfront villas offer a perfect blend of exclusivity and comfort, providing a sanctuary of relaxation and rejuvenation, where the soothing sound of waves and the breathtaking views of the ocean create an ambiance of serenity and bliss, allowing you to unwind and create timeless memories in an idyllic paradise.",
-      "pricePerNight": 800,
-      "roomSize": "150 sqm",
+      "roomType": "Mountain Chalet",
+      "description": "Escape to the serenity of our mountain chalets, nestled amidst breathtaking alpine scenery. Experience the perfect blend of rustic charm and modern comfort, surrounded by lush forests and panoramic mountain views. Our mountain chalets offer a cozy and intimate atmosphere, ideal for reconnecting with nature and finding inner peace. Unwind by the fireplace or embark on adventurous hikes along scenic trails, immersing yourself in the beauty of the natural world. Delight in a tranquil retreat that rejuvenates the mind, body, and soul, leaving you with cherished memories of a peaceful mountain getaway.",
+      "pricePerNight": 500,
+      "roomSize": "120 sqm",
       "availability": true,
-      "roomImages": ["https://i.ibb.co/RN7ghyn/rooms-9.jpg", "https://i.ibb.co/wYCMv6y/rooms-26.jpg", "https://i.ibb.co/2jCBks6/rooms-27.jpg"],
-      "specialOffers": null,
-      "features": ["Private beach access", "Infinity pool", "Outdoor dining area", "Personal chef on request", "Airport transfer service", "Beachfront yoga sessions"]
+      "roomImages": ["https://i.ibb.co/fns2j4T/room45.jpg", "https://i.ibb.co/zQDyVfs/rooms-8.jpg", "https://i.ibb.co/MsjjLfQ/rooms-13.jpg"],
+      "specialOffers": "Complimentary breakfast and guided nature walks",
+      "features": ["Panoramic mountain views", "Cozy fireplace", "Private hiking trails", "Gourmet dining experiences", "Spa and wellness facilities"]
     }
   ]
   

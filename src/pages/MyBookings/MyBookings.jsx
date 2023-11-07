@@ -8,6 +8,7 @@ import axios from "axios";
 import Footer from "../HomePage/Footer";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const MyBookings = () => {
   const axiosSecure = useAxiosRoute();
@@ -144,10 +145,11 @@ const MyBookings = () => {
 
   return (
     <div className="bg-slate-100">
+      <Helmet> <title>SwiftStay | My Booking</title></Helmet>
       <Navber></Navber>
       <div className=" max-w-7xl min-h-screen py m-auto">
         <div className=" mt-10">
-          <table className="table md:w-20 m-auto">
+          <table className="table md:w-20 m-auto object-center">
             {/* head */}
             <thead className="">
               <tr className="bg-slate-300 text-zinc-700 rounded-md ">
@@ -217,7 +219,7 @@ const MyBookings = () => {
             {/* foot */}
           </table>
         </div>
-        <div className=" border mt-16 w-[50%] m-auto">
+        <div className=" border mt-16 md:w-[50%] m-auto">
           <div className="flex justify-between p-4">
             <p className="text-xl">Reviews</p>
             <button

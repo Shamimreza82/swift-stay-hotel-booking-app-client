@@ -1,10 +1,12 @@
 import React from "react";
 import Navber from "../components/Navber";
 import Footer from "./HomePage/Footer";
+import { Helmet } from "react-helmet";
 
 const ContactUs = () => {
   return (
     <div className="bg-gray-50">
+      <Helmet> <title>SwiftStay | Contact Us</title></Helmet>
       <Navber></Navber>
       <section className="text-gray-600 body-font relative">
         <div className="container px-5 py-24 mx-auto">

@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import moment from "moment";
 import Footer from "../HomePage/Footer";
+import { Helmet } from "react-helmet";
 
 const RoomDetailes = () => {
  
@@ -48,6 +49,7 @@ const RoomDetailes = () => {
 
   return (
     <div className="bg-gray-50 ">
+      <Helmet> <title>SwiftStay | Rooms Deities</title></Helmet>
       <Navber></Navber>
       <div className="max-w-7xl m-auto text-center md:text-4xl text-xl py-10 border-b border-t mt-16 px-3 ">
         <p>

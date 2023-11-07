@@ -3,6 +3,7 @@ import Navber from '../../components/Navber';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const UpdateBooking = () => {
 
@@ -32,6 +33,7 @@ const UpdateBooking = () => {
 
     return (
         <div>
+          <Helmet> <title>SwiftStay | Update Booking</title></Helmet>
       <Navber></Navber>
       <div className=" max-w-7xl m-auto grid grid-cols-12">
         <div className="bg-slate-200 col-span-8 mt-5">
