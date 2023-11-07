@@ -21,11 +21,7 @@ const RoomDetailes = () => {
     .then((res) => {
       setrating(res.data);
     });
-
-
-    console.log(rating);
-
-  }, []);
+  }, [rating]);
 
   
   const {

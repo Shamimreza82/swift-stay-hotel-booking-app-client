@@ -4,24 +4,25 @@ import { useLoaderData } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import Navber from "../../components/Navber";
-import Reating from "../../components/Reating";
 import moment from "moment/moment";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosRoute from "../../Hooks/useAxiosRoute";
+
 
 const BookingDetiles = () => {
   const { user } = useAuth();
-  const booking = useLoaderData();
   const room = useLoaderData();
   const [date, setDate] = useState(0);
-  const [rating, setrating] = useState([])
-
-
+  const [rating, setrating] = useState([]);
   const [booked, setBooked] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/booking").then((res) => {
-      setBooked(res.data);
+    axios.get("http://localhost:5000/booking", {withCredentials: true})
+       .then((res) => {
+       setBooked(res.data);
     });
   }, []);
+
 
   useEffect(() => {
     axios.get("http://localhost:5000/ratings").then((res) => {
@@ -29,12 +30,24 @@ const BookingDetiles = () => {
     });
   }, []);
 
+  const {data: bookedRoom, isLoading, error, refetch} = useQuery({
+    queryKey: ['booking'], 
+    queryFn: async () => {
+        const res = await axios.get('http://localhost:5000/booking')
+        return res
+    }
+  })
+
+ console.log(bookedRoom?.data);
+ console.log(booked);
+
+
   // console.log(booked);
   // console.log(room);
   // console.log(date);
 
-  const bookedName = booked.map((book) => book.date === date);
-    console.log(bookedName);
+  const bookedName = bookedRoom?.data.map((book) => book.date === date);
+  console.log(bookedName);
   const {
     _id,
     roomType,
@@ -64,7 +77,11 @@ const BookingDetiles = () => {
     };
 
     if (bookedName.includes(true)) {
-      return Swal.fire("Already Booked", "Try another ", "error");
+      return (
+        Swal.fire("Already Booked", "Try another ", "error")
+        
+      ) 
+     
     }
 
     axios
@@ -75,34 +92,31 @@ const BookingDetiles = () => {
         console.log(res.data);
         if (res.data.acknowledged) {
           Swal.fire("Booking Successful", "You clicked my booking ", "success");
+          refetch()
         }
       });
   };
 
+  const handelReview = (e) => {
+    e.preventDefault();
 
-
-  const handelReview = e => {
-    e.preventDefault()
-
-  
-    const name = e.target.name.value
-    const rating = e.target.rating.value
-    const text = e.target.text.value
+    const name = e.target.name.value;
+    const rating = e.target.rating.value;
+    const text = e.target.text.value;
 
     const review = {
-      name, 
-      rating, 
-      text
-    }
+      name,
+      rating,
+      text,
+    };
     console.log(review);
 
-    axios.post('http://localhost:5000/rating',review, {withCredentials: true} )
-    .then(res => {
-      console.log(res.data);
-    })
-  }
-
-
+    axios
+      .post("http://localhost:5000/rating", review, { withCredentials: true })
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
 
   return (
     <div>
@@ -111,24 +125,35 @@ const BookingDetiles = () => {
       <div className="max-w-7xl m-auto grid grid-cols-12 gap-5 mt-7 ">
         <div className="col-span-8 bg-slate-200 rounded-md">
           <img className="rounded-md" src={roomImages} alt="" />
-          <form className="ml-7" onSubmit={handelbooking} action="">
+          <form className="ml-7"  onSubmit={handelbooking}  action="">
             <p className="font-bold text-3xl mt-7">{roomType}</p>
             <p>Price Per Night: ${pricePerNight}</p>
             <p>Room Side: {roomSize}</p>
             <p> Availability: {availability ? "Available" : "Unavailable"}</p>
+            <label>
+              
+            </label>
+            <div className="flex items-center">
             <input
               className="block py-3 px-4 my-3 rounded-md "
               type="date"
               required
               onChange={(e) => setDate(e.target.value)}
-            />
+            /> 
+            <p className="bg-red-200 p-2 ml-5 text-red-600">Select Your Booking Date</p>
+            </div>
             <input
               className="btn mb-5 bg-green-500 text-white"
               type="submit"
               value="Book Now"
             />
           </form>
+
+          {/* modal  */}
         </div>
+
+        {/* Reveiew Section */}
+
         <div className="col-span-4  rounded-md">
           <p className="text-center text-xl mt-2">Review</p>
           <div className="bg-slate-200 mt-6 rounded-md" action="">
@@ -164,38 +189,58 @@ const BookingDetiles = () => {
                     value="Submit"
                   />
                 </div>
-                </form>
+              </form>
             </div>
-            </div>
-      {/* Ratting */}
-      {
-            rating.map(ratin => 
-              <div key={ratin._id} className="bg-slate-100 mt-5 p-4  rounded-md">
-            <div className="flex gap-4">
-              <img className="rounded-full h-16" src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlMjFfM2RfcmVuZGVyX2NoYXJhY3Rlcl9vZl9hX3N0cmVzc2VkX2J1c2luZXNzX21hbl9kMDk1ZDQ3NC0zYmI0LTQ0MzItYTJhYS1lMDZhMTg2MjAzZDUucG5n.png" alt="" />
-              <div>
-                    <p>{ratin.name}</p>
-                    <div className="rating rating-md">
-                    <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
-                    <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" checked />
-                    <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
-                    <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
-                    <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
-                  </div>
-                  <p className="text-sm">{moment().format('MMMM Do YYYY, h:mm:ss a')}</p>
-              </div>
-            </div>
-              <p className="ml-20 mt-6">{ratin.text}</p>
           </div>
-              
-              )
-          }
-             
-
+          {/* Ratting */}
+          {rating.map((ratin) => (
+            <div key={ratin._id} className="bg-slate-100 mt-5 p-4  rounded-md">
+              <div className="flex gap-4">
+                <img
+                  className="rounded-full h-16"
+                  src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlMjFfM2RfcmVuZGVyX2NoYXJhY3Rlcl9vZl9hX3N0cmVzc2VkX2J1c2luZXNzX21hbl9kMDk1ZDQ3NC0zYmI0LTQ0MzItYTJhYS1lMDZhMTg2MjAzZDUucG5n.png"
+                  alt=""
+                />
+                <div>
+                  <p>{ratin.name}</p>
+                  <div className="rating rating-md">
+                    <input
+                      type="radio"
+                      name="rating-7"
+                      className="mask mask-star-2 bg-orange-400"
+                    />
+                    <input
+                      type="radio"
+                      name="rating-7"
+                      className="mask mask-star-2 bg-orange-400"
+                      checked
+                    />
+                    <input
+                      type="radio"
+                      name="rating-7"
+                      className="mask mask-star-2 bg-orange-400"
+                    />
+                    <input
+                      type="radio"
+                      name="rating-7"
+                      className="mask mask-star-2 bg-orange-400"
+                    />
+                    <input
+                      type="radio"
+                      name="rating-7"
+                      className="mask mask-star-2 bg-orange-400"
+                    />
+                  </div>
+                  <p className="text-sm">
+                    {moment().format("MMMM Do YYYY, h:mm:ss a")}
+                  </p>
+                </div>
+              </div>
+              <p className="ml-20 mt-6">{ratin.text}</p>
+            </div>
+          ))}
         </div>
-        
       </div>
-       
     </div>
   );
 };

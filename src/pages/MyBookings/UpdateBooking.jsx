@@ -1,7 +1,35 @@
+import { useState } from 'react';
 import Navber from '../../components/Navber';
-import { Link } from 'react-router-dom';
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const UpdateBooking = () => {
+
+    const {id} = useParams()
+    const singelBooking = useLoaderData()
+    const [date, setDate] = useState()
+    const navigate = useNavigate()
+
+   
+    const updateBookingDate = () => {
+     
+      axios.put(`http://localhost:5000/booking/${id}`, {date} )
+      .then(res => {
+        console.log(res.data);
+        if(res.data.modifiedCount === 1) {
+          Swal.fire({
+            title: "update successfully",
+            text: "Please Check My Booking ",
+            icon: "success"
+          });
+          navigate('/myBookings')
+        }
+      })
+
+    }
+
+
     return (
         <div>
       <Navber></Navber>
@@ -16,11 +44,11 @@ const UpdateBooking = () => {
                 <th>Booking Date</th>
                 <th>Price</th>
                 <th>Update Booking</th>
-                <th>Cancel Booking</th>
+              
               </tr>
             </thead >
-            {data?.data.map((booking) => (
-              <tbody key={booking._id}>
+            
+              <tbody >
                 <tr>
 
                   <td>
@@ -28,37 +56,36 @@ const UpdateBooking = () => {
                       <div className="avatar">
                         <div className=" w-20 h-20">
                           <img
-                            src={booking.roomImages}
+                            src={singelBooking.roomImages}
                             alt="Avatar Tailwind CSS Component"
                           />
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold">{booking.roomType}</div>
+                        <div className="font-bold">{singelBooking.roomType}</div>
                         <div className="text-sm opacity-50">Brazil</div>
                       </div>
                     </div>
                   </td>
                   <td>
-                    {booking.name}
+                    {singelBooking.name}
                     <br />
                     <span className="badge badge-ghost badge-sm">
-                    {booking.email}
+                    {singelBooking.email}
                     </span>
                   </td>
                   <td>
-                    {booking.date}
+                     <input className='p-2 rounded-md bg-red-200 text-red-600 font-bold' defaultValue={singelBooking.date} onChange={(e)=> setDate(e.target.value)} type="date" name="" id="" />
                   </td>
-                  <td>$  {booking.pricePerNight}</td>
+                  
+                  <td>$  {singelBooking.pricePerNight}</td>
                   <th>
-                    <Link to={`/updateBooking/${booking._id}`} className="btn btn-ghost btn-xs">Update</Link>
+                    <button onClick={updateBookingDate} className="btn btn-ghost btn-xs">Update</button>
                   </th>
-                  <th>
-                    <button onClick={()=>handelDeletebooking(booking._id)} className="btn btn-ghost btn-xs">Cancel</button>
-                  </th>
+                
                 </tr>
               </tbody>
-            ))}
+      
             {/* foot */}
           </table>
         </div>
