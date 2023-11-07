@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Navber from "../../components/Navber";
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import Footer from "../HomePage/Footer";
@@ -9,6 +8,7 @@ import Footer from "../HomePage/Footer";
 const Rooms = () => {
   const [roomsAll, setrRooms] = useState([]);
   const [price, setPrice] = useState(roomsAll);
+  const [reviews, setReviews] = useState([])
   console.log(price);
 
   useEffect(() => {
@@ -22,6 +22,14 @@ const Rooms = () => {
   }, [price]);
 
   console.log(roomsAll);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/ratings").then((res) => {
+      setReviews(res.data);
+    });
+  }, []);
+
+  console.log(reviews.length);
 
 
   // const {data: rooms, isLoading, error, refetch} = useQuery({
@@ -53,6 +61,7 @@ const Rooms = () => {
         each designed to cater to your unique preferences and needs. Whether
         you're seeking a cozy retreat or an indulgent escape,
       </p>
+      <p className="text-right max-w-7xl "> Total Reviews: {reviews.length}</p>
       <div className=" border border-green-500 mb-3 p-1 rounded-md max-w-7xl m-auto mt-5">
         <select
           onChange={handlePriceSet}
@@ -64,6 +73,7 @@ const Rooms = () => {
           <option value="desc">High to low</option>
           
         </select>
+        
       </div>
       <Marquee>
         {

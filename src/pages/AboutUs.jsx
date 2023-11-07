@@ -4,7 +4,7 @@ import Footer from "./HomePage/Footer";
 
 const AboutUs = () => {
   return (
-    <div>
+    <div className="bg-slate-50">
       <Navber></Navber>
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-2">
@@ -54,12 +54,9 @@ const AboutUs = () => {
             </div>
             <div className="max-w-xl mb-6">
               <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl sm:leading-none">
-                Let us handle
+              Welcome to SwiftStay 
                 <br className="hidden md:block" />
-                your next{" "}
-                <span className="inline-block text-deep-purple-accent-400">
-                  destination
-                </span>
+          
               </h2>
               <p className="text-base text-gray-700 md:text-lg">
                 Welcome to SwiftStay, where hospitality meets luxury. Nestled in

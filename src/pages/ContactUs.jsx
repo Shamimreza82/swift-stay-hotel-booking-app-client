@@ -4,7 +4,7 @@ import Footer from "./HomePage/Footer";
 
 const ContactUs = () => {
   return (
-    <div>
+    <div className="bg-gray-50">
       <Navber></Navber>
       <section className="text-gray-600 body-font relative">
         <div className="container px-5 py-24 mx-auto">

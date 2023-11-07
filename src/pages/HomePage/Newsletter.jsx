@@ -1,9 +1,9 @@
 const Newsletter = () => {
   return (
-    <div className="max-w-7xl m-auto">
+    <div className="max-w-7xl m-auto px-3 ">
       <section className="text-gray-600 body-font relative ">
         <div className="md:w-[70%] m-auto">
-          <div className=" flex flex-col md:ml-auto w-full  mt-8 md:mt-0 bg-green-300 py-10 md:px-40 rounded-md">
+          <div className=" flex flex-col md:ml-auto w-full px-4  mt-8 md:mt-0 bg-green-200 py-10 md:px-40 rounded-md">
             <h2 className="text-zinc-800 text-2xl mb-1 font-medium title-font">
             Subscription for our Newsletter
             </h2>

@@ -47,17 +47,17 @@ const RoomDetailes = () => {
   console.log(rating);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 ">
       <Navber></Navber>
-      <div className="max-w-7xl m-auto text-center text-4xl py-10 border-b border-t mt-16">
+      <div className="max-w-7xl m-auto text-center md:text-4xl text-xl py-10 border-b border-t mt-16 px-3 ">
         <p>
-          <span className="font-bold text-zinc-800">Discover Our Exquisite Collection</span>{" "}
-          <br />{" "}
-          <span className="text-2xl">of Distinguished Suites and Rooms</span>
+          <span className="font-bold text-zinc-800">Discover Our Exquisite Collection</span>
+          <br />
+          <span className="md:text-2xl">of Distinguished Suites and Rooms</span>
         </p>
       </div>
-      <div className="max-w-7xl m-auto grid md:grid-cols-12 gap-4 mt-5">
-        <div className=" col-span-8">
+      <div className="max-w-7xl m-auto grid md:grid-cols-12 gap-4 mt-5 px-3">
+        <div className=" md:col-span-8">
           <div className="">
             <img className="" src={roomImages[0]} alt="" />
           </div>
@@ -79,7 +79,7 @@ const RoomDetailes = () => {
 
         {/* right side */}
 
-        <form onSubmit={handlesubmitBooking} className="col-span-4  " action="">
+        <form onSubmit={handlesubmitBooking} className="md:col-span-4 w-full " action="">
           
           <div className="p-8 bg-slate-100 rounded-md space-y-3">
             <p className="font-bold text-2xl">{roomType}</p>

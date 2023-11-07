@@ -122,8 +122,8 @@ const BookingDetiles = () => {
     <div className="bg-gray-50">
       <Navber></Navber>
 
-      <div className="max-w-7xl m-auto grid grid-cols-12 gap-5 mt-7 ">
-        <div className="col-span-8 bg-slate-200 rounded-md">
+      <div className="max-w-7xl m-auto grid md:grid-cols-12 md:gap-5 mt-7 ">
+        <div className="md:col-span-8 bg-slate-200 rounded-md">
           <img className="rounded-md" src={roomImages} alt="" />
           <form className="ml-7"  onSubmit={handelbooking}  action="">
             <p className="font-bold text-3xl mt-7">{roomType}</p>
