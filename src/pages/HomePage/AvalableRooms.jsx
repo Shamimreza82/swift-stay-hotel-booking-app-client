@@ -28,7 +28,9 @@ const AvalableRooms = () => {
               key={rooms._id}
               className=" p-4 hover:scale-105 duration-200"
               data-aos="zoom-in">
+                <p>{rooms.roomType}</p>
               <div className="flex relative" >
+    
                 <img
                   alt="gallery"
                   className="absolute inset-0 w-full h-full object-cover object-center rounded-md"
@@ -38,6 +40,7 @@ const AvalableRooms = () => {
                 <div className="md:px-8 md:py-10 flex justify-center items-center  relative h-48 z-10 w-full border-4 border-gray-200 duration-300  opacity-0 hover:opacity-100 ">
                
                   <div className="hover:shadow-xl">
+                
                     <h2 className="tracking-widest text-xl title-font font-medium text-green-400 mb-1 drop-shadow-2xl dro">
                       {rooms.roomType}
                     </h2>

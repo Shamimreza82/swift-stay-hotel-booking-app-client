@@ -18,7 +18,7 @@ const RoomDetailes = () => {
   const [rating, setrating] = useState([])
   
   useEffect(() => {
-    axios.get("https://hotel-management-server-three.vercel.app/ratings")
+    axios.get("http://localhost:5000/ratings")
     .then((res) => {
       setrating(res.data);
     });
