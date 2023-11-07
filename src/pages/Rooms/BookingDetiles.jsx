@@ -10,13 +10,11 @@ import moment from "moment/moment";
 const BookingDetiles = () => {
   const { user } = useAuth();
   const booking = useLoaderData();
-  console.log(booking);
   const room = useLoaderData();
   const [date, setDate] = useState(0);
   const [rating, setrating] = useState([])
-  console.log(rating);
 
-  console.log(date);
+
   const [booked, setBooked] = useState([]);
 
   useEffect(() => {
@@ -31,11 +29,12 @@ const BookingDetiles = () => {
     });
   }, []);
 
+  // console.log(booked);
+  // console.log(room);
+  // console.log(date);
 
-
-  const bookedName = booked.map((book) => book.roomType == room.roomType);
-  console.log(bookedName);
-
+  const bookedName = booked.map((book) => book.date === date);
+    console.log(bookedName);
   const {
     _id,
     roomType,
@@ -103,6 +102,8 @@ const BookingDetiles = () => {
     })
   }
 
+
+
   return (
     <div>
       <Navber></Navber>
@@ -118,6 +119,7 @@ const BookingDetiles = () => {
             <input
               className="block py-3 px-4 my-3 rounded-md "
               type="date"
+              required
               onChange={(e) => setDate(e.target.value)}
             />
             <input

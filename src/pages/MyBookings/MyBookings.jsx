@@ -5,12 +5,14 @@ import useAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import Footer from "../HomePage/Footer";
+import moment from "moment";
 
 const MyBookings = () => {
   const axiosSecure = useAxiosRoute();
   const { user } = useAuth();
   const [myBooking, setMybooking] = useState([]);
+  const [booked, setBooked] = useState([]);
 
   console.log(myBooking);
 
@@ -69,25 +71,59 @@ console.log(data?.data);
     })
   }
 
+  useEffect(() => {
+    axios.get("http://localhost:5000/booking").then((res) => {
+      setBooked(res.data);
+    });
+  }, []);
+    
+  console.log(booked);
+
+
+  const handelCanelBooking = (date) => {
+    console.log(date);
+    
+    const bookingDate = moment(date)
+    const cancellationLimit = bookingDate.clone().subtract(1, 'days');
+    
+    const currentDate = moment()
+    if(currentDate.isBefore(cancellationLimit)){
+      console.log('You can cancel the booking before', cancellationLimit.format('YYYY-MM-DD'));
+      Swal.fire({
+        title: "Your Booking cancel",
+        icon: "success"
+      });
+    } else {
+      console.log('Cancellation period has passed. You cannot cancel the booking anymore.');
+      Swal.fire({
+        title: "Cancellation period has passed",
+        text: "You cannot cancel the booking anymore.",
+        icon: "error"
+      });
+    }
+  }
+
+
   return (
     <div>
       <Navber></Navber>
-      <div className=" max-w-7xl m-auto grid grid-cols-12">
-        <div className="bg-slate-200 col-span-8 mt-5">
+      <div className=" max-w-7xl  m-auto grid grid-cols-12 h-screen">
+        <div className=" col-span-8 mt-5">
           <table className="table">
             {/* head */}
-            <thead>
-              <tr>
+            <thead className="">
+              <tr className="bg-slate-300 text-zinc-700 rounded-md space-x-2"> 
                 <th>Room Image</th>
                 <th>User</th>
                 <th>Booking Date</th>
-                <th>Price</th>
+                <th className="px-7">Price</th>
                 <th>Update Booking</th>
                 <th>Cancel Booking</th>
+                <th>Delete Booking</th>
               </tr>
             </thead >
             {data?.data.map((booking) => (
-              <tbody key={booking._id}>
+              <tbody key={booking._id} className="bg-slate-200 ">
                 <tr>
 
                   <td>
@@ -102,7 +138,7 @@ console.log(data?.data);
                       </div>
                       <div>
                         <div className="font-bold">{booking.roomType}</div>
-                        <div className="text-sm opacity-50">Brazil</div>
+                      
                       </div>
                     </div>
                   </td>
@@ -118,10 +154,13 @@ console.log(data?.data);
                   </td>
                   <td>$  {booking.pricePerNight}</td>
                   <th>
-                    <button onClick={handelupdate}  className="btn btn-ghost btn-xs">Update</button>
+                    <button onClick={handelupdate}  className="btn-ghost btn-xs bg-green-600 rounded-sm text-white">Update</button>
                   </th>
                   <th>
-                    <button onClick={()=>handelDeletebooking(booking._id)} className="btn btn-ghost btn-xs">Cancel</button>
+                    <button onClick={()=>handelCanelBooking(booking.date)}  className="btn-ghost btn-xs bg-yellow-500 rounded-sm text-white">Cancel</button>
+                  </th>
+                  <th>
+                    <button onClick={()=>handelDeletebooking(booking._id)} className=" btn-ghost btn-xs bg-red-500 rounded-sm text-white">Delete</button>
                   </th>
                 </tr>
               </tbody>
@@ -131,6 +170,7 @@ console.log(data?.data);
         </div>
         <div></div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
