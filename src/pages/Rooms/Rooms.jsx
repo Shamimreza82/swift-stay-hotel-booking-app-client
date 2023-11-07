@@ -42,7 +42,7 @@ const Rooms = () => {
   };
 
   return (
-    <div>
+    <div className="bg-gray-50">
       <Navber></Navber>
       <p className="max-w-7xl m-auto text-center py-5 md:text-2xl font-bold mt-6">
         <span className="md:text-4xl text-zinc-800 text-xl">Explore Our Available Rooms</span>

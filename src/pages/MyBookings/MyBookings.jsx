@@ -143,11 +143,11 @@ const MyBookings = () => {
   };
 
   return (
-    <div>
+    <div className="bg-slate-100">
       <Navber></Navber>
       <div className=" max-w-7xl min-h-screen py m-auto">
         <div className=" mt-10">
-          <table className="table">
+          <table className="table md:w-20 m-auto">
             {/* head */}
             <thead className="">
               <tr className="bg-slate-300 text-zinc-700 rounded-md ">

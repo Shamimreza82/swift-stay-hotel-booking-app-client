@@ -21,7 +21,7 @@ const RoomDetailes = () => {
     .then((res) => {
       setrating(res.data);
     });
-  }, [rating]);
+  }, []);
 
   
   const {
@@ -44,8 +44,10 @@ const RoomDetailes = () => {
     console.log(date);
   };
 
+  console.log(rating);
+
   return (
-    <div>
+    <div className="bg-gray-50">
       <Navber></Navber>
       <div className="max-w-7xl m-auto text-center text-4xl py-10 border-b border-t mt-16">
         <p>
@@ -93,15 +95,15 @@ const RoomDetailes = () => {
             </Link>
           </div>
           <form className=" mt-6" action="">
-          <p>All reviews</p>
+          <p className="text-xl">Reviews: {rating.length}</p>
             <div>
             {
-            rating.map(ratin => 
-              <div key={ratin._id} className="bg-slate-100 mt-5 p-4  rounded-md">
-            <div className="flex gap-4">
-              <img className="rounded-full h-16" src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlMjFfM2RfcmVuZGVyX2NoYXJhY3Rlcl9vZl9hX3N0cmVzc2VkX2J1c2luZXNzX21hbl9kMDk1ZDQ3NC0zYmI0LTQ0MzItYTJhYS1lMDZhMTg2MjAzZDUucG5n.png" alt="" />
+            rating.map(ratings => 
+              <div key={ratings._id} className="bg-slate-100 mt-5 p-4  rounded-md">
+            <div className="">
+
               <div>
-                    <p className="font-bold text-zinc-800">{ratin.name}</p>
+                    <p className="font-bold text-zinc-800 my-2">{ratings.name}</p>
                     <div className="rating rating-sm">
                     <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
                     <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" checked />
@@ -109,10 +111,10 @@ const RoomDetailes = () => {
                     <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
                     <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
                   </div>
-                  <p className="text-sm text-gray-500">{moment().format('MMMM Do YYYY, h:mm:ss a')}</p>
+                  <p className="text-sm text-gray-500">{ratings.CurrentDate}</p>
               </div>
             </div>
-              <p className="ml-20 mt-6 text-sm">{ratin.text}</p>
+              <p className=" mt-2 text-sm">{ratings.text}</p>
           </div>
               
               )

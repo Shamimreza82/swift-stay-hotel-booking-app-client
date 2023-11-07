@@ -119,7 +119,7 @@ const BookingDetiles = () => {
   };
 
   return (
-    <div>
+    <div className="bg-gray-50">
       <Navber></Navber>
 
       <div className="max-w-7xl m-auto grid grid-cols-12 gap-5 mt-7 ">
@@ -149,13 +149,14 @@ const BookingDetiles = () => {
             />
           </form>
 
-          {/* modal  */}
+
         </div>
 
         {/* Reveiew Section */}
 
         <div className="col-span-4  rounded-md">
-          <p className="text-center text-xl mt-2">Review</p>
+        <p className="text-center text-xl mt-2 bg-slate-100 py-2 rounded-md">Review</p>
+          {/* <p className="text-center text-xl mt-2">Review</p>
           <div className="bg-slate-200 mt-6 rounded-md" action="">
             <div>
               <form onSubmit={handelReview} className="card-body">
@@ -191,16 +192,12 @@ const BookingDetiles = () => {
                 </div>
               </form>
             </div>
-          </div>
+          </div> */}
           {/* Ratting */}
           {rating.map((ratin) => (
             <div key={ratin._id} className="bg-slate-100 mt-5 p-4  rounded-md">
               <div className="flex gap-4">
-                <img
-                  className="rounded-full h-16"
-                  src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlMjFfM2RfcmVuZGVyX2NoYXJhY3Rlcl9vZl9hX3N0cmVzc2VkX2J1c2luZXNzX21hbl9kMDk1ZDQ3NC0zYmI0LTQ0MzItYTJhYS1lMDZhMTg2MjAzZDUucG5n.png"
-                  alt=""
-                />
+
                 <div>
                   <p>{ratin.name}</p>
                   <div className="rating rating-md">
@@ -236,7 +233,7 @@ const BookingDetiles = () => {
                   </p>
                 </div>
               </div>
-              <p className="ml-20 mt-6">{ratin.text}</p>
+              <p className=" mt-4">{ratin.text}</p>
             </div>
           ))}
         </div>

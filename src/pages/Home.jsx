@@ -9,7 +9,7 @@ import AvalableRooms from './HomePage/AvalableRooms';
 
 const Home = () => {
     return (
-        <div>
+        <div className=''>
                 <Banner></Banner>
                 <SpecialOffers></SpecialOffers>
                 <AvalableRooms></AvalableRooms>
