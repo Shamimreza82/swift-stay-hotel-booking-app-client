@@ -26,6 +26,8 @@ const RoomDetailes = () => {
     console.log(rating);
 
   }, []);
+
+  
   const {
     _id,
     roomType,

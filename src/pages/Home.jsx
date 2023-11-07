@@ -1,11 +1,10 @@
 import Banner from '../components/Banner';
 import SpecialOffers from './HomePage/SpecialOffers';
-import Testimonials from './HomePage/Testimonials';
+import Testimonials from './HomePage/Testmonial/Testimonials';
 import Newsletter from './HomePage/Newsletter';
 import Footer from './HomePage/Footer';
 import AvalableRooms from './HomePage/AvalableRooms';
-import Banner2 from '../components/Banner2';
-import { CarouselCustomArrows } from '../components/CarouselCustomArrows';
+
 
 
 const Home = () => {
