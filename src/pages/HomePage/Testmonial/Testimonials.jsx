@@ -23,8 +23,8 @@ const Testimonials = () => {
   
     
     return (
-        <div className='h-96 mt-20'>
-          <p className='text-center'>Test</p>
+        <div className=' md:mt-20 mt-6'>
+          <p className='text-center md:text-4xl text-lg font-bold text-zinc-800'>Testimonials</p>
         <Swiper
         slidesPerView={2}
         spaceBetween={30}
