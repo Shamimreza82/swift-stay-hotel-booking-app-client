@@ -7,7 +7,7 @@ const useRooms = () => {
     const [rooms, setRooms] = useState()
 
     useEffect(() => {
-            axios.get('http://localhost:5000/api/v1/rooms')
+            axios.get('https://hotel-management-server-three.vercel.app/api/v1/rooms')
              .then(res => {
                 setRooms(res.data)
              })
@@ -16,7 +16,7 @@ const useRooms = () => {
     // const {data, isLoading, } = useQuery({
     //     queryKey: ['rooms'], 
     //     queryFn: async () => {
-    //          const res = await axios.get('http://localhost:5000/api/v1/rooms')
+    //          const res = await axios.get('https://hotel-management-server-three.vercel.app/api/v1/rooms')
     //          return await res.data
     //     }
     // })

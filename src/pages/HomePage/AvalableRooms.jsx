@@ -22,7 +22,7 @@ const AvalableRooms = () => {
             solo adventure, 
           </p>
         </div>
-        <div className=" grid md:grid-cols-4">
+        <div className=" grid md:grid-cols-3">
           {data?.map((rooms) => (
             <div
               key={rooms._id}

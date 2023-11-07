@@ -9,6 +9,7 @@ import Lottie from "lottie-react";
 import amimation from '../assets/images/Animation - 1699309790212.json'
 import { FcGoogle } from "react-icons/fc";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 
 
@@ -32,6 +33,11 @@ const Login = () => {
             .then(res => {
               console.log(res.user);
               navigate(location?.state ? location.state : "/");
+              Swal.fire({
+                title: "Good job!",
+                text: "Login Successful",
+                icon: "success"
+              });
             })
         } catch (error) {
             console.log(error);
@@ -43,6 +49,11 @@ const handlegoogle = () => {
   .then( resilt => {
     console.log(resilt);
     navigate(location?.state ? location.state : "/");
+    Swal.fire({
+      title: "Good job!",
+      text: "Login Successful",
+      icon: "success"
+    });
   })
  
 }

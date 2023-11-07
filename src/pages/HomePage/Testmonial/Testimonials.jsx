@@ -12,7 +12,7 @@ const Testimonials = () => {
     const [rating, setrating] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:5000/ratings")
+        axios.get("https://hotel-management-server-three.vercel.app/ratings")
         .then((res) => {
           setrating(res.data);
         });

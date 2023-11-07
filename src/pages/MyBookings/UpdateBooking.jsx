@@ -15,7 +15,7 @@ const UpdateBooking = () => {
    
     const updateBookingDate = () => {
      
-      axios.put(`http://localhost:5000/booking/${id}`, {date} )
+      axios.put(`https://hotel-management-server-three.vercel.app/booking/${id}`, {date} )
       .then(res => {
         console.log(res.data);
         if(res.data.modifiedCount === 1) {

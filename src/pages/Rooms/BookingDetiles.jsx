@@ -19,7 +19,7 @@ const BookingDetiles = () => {
   const [booked, setBooked] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/booking", {withCredentials: true})
+    axios.get("https://hotel-management-server-three.vercel.app/booking", {withCredentials: true})
        .then((res) => {
        setBooked(res.data);
     });
@@ -27,7 +27,7 @@ const BookingDetiles = () => {
 
 
   useEffect(() => {
-    axios.get("http://localhost:5000/ratings").then((res) => {
+    axios.get("https://hotel-management-server-three.vercel.app/ratings").then((res) => {
       setrating(res.data);
     });
   }, []);
@@ -35,7 +35,7 @@ const BookingDetiles = () => {
   const {data: bookedRoom, isLoading, error, refetch} = useQuery({
     queryKey: ['booking'], 
     queryFn: async () => {
-        const res = await axios.get('http://localhost:5000/booking')
+        const res = await axios.get('https://hotel-management-server-three.vercel.app/booking')
         return res
     }
   })
@@ -87,7 +87,7 @@ const BookingDetiles = () => {
     }
 
     axios
-      .post("http://localhost:5000/api/v1/booking", booking, {
+      .post("https://hotel-management-server-three.vercel.app/api/v1/booking", booking, {
         withCredentials: true,
       })
       .then((res) => {
@@ -114,7 +114,7 @@ const BookingDetiles = () => {
     console.log(review);
 
     axios
-      .post("http://localhost:5000/rating", review, { withCredentials: true })
+      .post("https://hotel-management-server-three.vercel.app/rating", review, { withCredentials: true })
       .then((res) => {
         console.log(res.data);
       });
