@@ -23,7 +23,7 @@ const MyBookings = () => {
     queryFn: async () => {
       const res = await axiosSecure.get(`/bookings?email=${user?.email}`);
       return res;
-      // fetch(`http://localhost:5000/bookings?email=${user?.email}`, {credentials: "include"})
+      // fetch(`https://hotel-management-server-three.vercel.app/bookings?email=${user?.email}`, {credentials: "include"})
       // .then(res => res.json())
       // .then(data => console.log(data))
     },
@@ -47,7 +47,7 @@ const MyBookings = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/api/v1/deleteBooking/${_id}`)
+          .delete(`https://hotel-management-server-three.vercel.app/api/v1/deleteBooking/${_id}`)
           .then((res) => {
             console.log(res);
             refetch();
@@ -60,13 +60,13 @@ const MyBookings = () => {
 
 
   useEffect(() => {
-    axios.get("http://localhost:5000/booking").then((res) => {
+    axios.get("https://hotel-management-server-three.vercel.app/booking").then((res) => {
       setBooked(res.data);
     });
   }, []);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/ratings").then((res) => {
+    axios.get("https://hotel-management-server-three.vercel.app/ratings").then((res) => {
       setReviews(res.data);
     });
   }, []);
@@ -120,7 +120,7 @@ const MyBookings = () => {
     console.log(review);
 
     axios
-      .post("http://localhost:5000/rating", review, { withCredentials: true })
+      .post("https://hotel-management-server-three.vercel.app/rating", review, { withCredentials: true })
       .then((res) => {
         console.log(res.data);
         if (res.data.acknowledged) {

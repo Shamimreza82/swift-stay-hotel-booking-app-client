@@ -4,12 +4,12 @@ const ImageGallery = () => {
   return (
     <div className=" m-auto">
         <section className="text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto flex flex-wrap">
+      <div className="container px-5 md:py-24 mt-3 mx-auto flex flex-wrap">
         <div className="flex w-full mb-20 flex-wrap">
-          <h1 className="sm:text-3xl text-4xl font-medium title-font text-zinc-800 lg:w-1/3 lg:mb-0 mb-4">
+          <h1 className=" md:text-4xl text-xl font-medium title-font text-zinc-800 lg:w-1/3 lg:mb-0 mb-4">
           Escape to Luxury Unwind in Our Exquisite Hotel Getaway
           </h1>
-          <p className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed text-base">
+          <p className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed md:text-sm">
           Indulge in a world of opulence and sophistication at our exquisite hotel getaway. From the moment you arrive, be prepared to be enveloped in an ambiance of luxury and comfort, where every detail has been meticulously curated to cater to your every need.
           </p>
         </div>

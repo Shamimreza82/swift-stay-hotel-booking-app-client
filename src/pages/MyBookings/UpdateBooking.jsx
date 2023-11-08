@@ -16,7 +16,7 @@ const UpdateBooking = () => {
     const [bookings, setBookings] =useState([])
      
     useEffect(()=>{
-      axios.get('http://localhost:5000/booking')
+      axios.get('https://hotel-management-server-three.vercel.app/booking')
       .then(res => {
         setBookings(res.data)
       })
@@ -44,7 +44,7 @@ const UpdateBooking = () => {
      }
 
      
-      axios.put(`http://localhost:5000/booking/${id}`, {date} )
+      axios.put(`https://hotel-management-server-three.vercel.app/booking/${id}`, {date} )
       .then(res => {
         console.log(res.data);
         if(res.data.modifiedCount === 1) {

@@ -23,7 +23,7 @@ const router = createBrowserRouter([
             {
                 path: '/', 
                 element: <Home></Home>,
-                loader: ()=> fetch('http://localhost:5000/api/v1/rooms')
+                loader: ()=> fetch('https://hotel-management-server-three.vercel.app/api/v1/rooms')
                 
             }, 
             {
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <BookingDetiles></BookingDetiles>,
                 </PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/api/v1/room/${params.id}`)
+                loader: ({params}) => fetch(`https://hotel-management-server-three.vercel.app/api/v1/room/${params.id}`)
             }, 
             {
                 path: '/about', 
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         path: '/roomsDeities/:id', 
         element: 
             <RoomDetailes></RoomDetailes>,
-        loader: ({params}) => fetch(`http://localhost:5000/api/v1/room/${params.id}`)
+        loader: ({params}) => fetch(`https://hotel-management-server-three.vercel.app/api/v1/room/${params.id}`)
         
     }, 
     {
@@ -79,7 +79,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
             <UpdateBooking></UpdateBooking>
         </PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/booking/${params.id}`)
+        loader: ({params}) => fetch(`https://hotel-management-server-three.vercel.app/booking/${params.id}`)
     }
 ])
 

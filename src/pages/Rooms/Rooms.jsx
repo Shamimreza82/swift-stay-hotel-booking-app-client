@@ -15,7 +15,7 @@ const Rooms = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/api/v1/rooms?sortField=pricePerNight&sortOrder=${price}`
+        `https://hotel-management-server-three.vercel.app/api/v1/rooms?sortField=pricePerNight&sortOrder=${price}`
       )
       .then((res) => {
         setrRooms(res.data);
@@ -25,7 +25,7 @@ const Rooms = () => {
   console.log(roomsAll);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/ratings").then((res) => {
+    axios.get("https://hotel-management-server-three.vercel.app/ratings").then((res) => {
       setReviews(res.data);
     });
   }, []);
