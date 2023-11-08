@@ -17,7 +17,7 @@ const Home = () => {
                 <SpecialOffers></SpecialOffers>
                 <AvalableRooms></AvalableRooms>
                 <Newsletter></Newsletter>
-                /
+                
                 <Testimonials></Testimonials>
                 <Footer></Footer>
                

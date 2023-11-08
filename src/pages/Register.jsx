@@ -8,6 +8,7 @@ import amimation from '../assets/images/Animation - 1699310360279.json'
 import Lottie from "lottie-react";
 import { FcGoogle } from "react-icons/fc";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 
 
@@ -27,6 +28,10 @@ const Register = () => {
             await createUser (email, password)
                 .then(result => {
                     console.log(result.user);
+                    Swal.fire({
+                      text: "Account Create Successful",
+                      icon: "success"
+                    });
                     navigate('/')
                 })
                 .catch(err => {
@@ -46,6 +51,7 @@ const Register = () => {
       .then( resilt => {
         console.log(resilt);
         navigate(location?.state ? location.state : "/");
+        
       })
      
     }

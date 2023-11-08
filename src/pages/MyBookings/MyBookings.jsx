@@ -7,34 +7,31 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import Footer from "../HomePage/Footer";
 import moment from "moment";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const MyBookings = () => {
   const axiosSecure = useAxiosRoute();
   const { user } = useAuth();
-  const [myBooking, setMybooking] = useState([]);
+  // const [myBooking, setMybooking] = useState([]);
   const [booked, setBooked] = useState([]);
   const [reviews, setReviews] = useState([]);
 
-  console.log(myBooking);
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["booking"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/bookings?email=${user?.email}`);
       return res;
+      // fetch(`http://localhost:5000/bookings?email=${user?.email}`, {credentials: "include"})
+      // .then(res => res.json())
+      // .then(data => console.log(data))
     },
   });
 
+
   console.log(data?.data);
 
-  //   useEffect(() => {
-  //     axiosSecure.get(`/bookings?email=${user?.email}`).then((res) => {
-  //       setMybooking(res.data);
-  //     });
-
-  //   }, [axiosSecure, user?.email]);
 
   const handelDeletebooking = (_id) => {
     console.log(_id);
@@ -61,13 +58,6 @@ const MyBookings = () => {
     });
   };
 
-  // const handelupdate = (id) => {
-  //   axios
-  //     .delete(`http://localhost:5000/api/v1/deleteBooking/${id}`)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //     });
-  // };
 
   useEffect(() => {
     axios.get("http://localhost:5000/booking").then((res) => {

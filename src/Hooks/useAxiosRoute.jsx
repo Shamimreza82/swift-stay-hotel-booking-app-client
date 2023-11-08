@@ -10,11 +10,9 @@ const instance = axios.create({
 const useAxiosRoute = () => {
     
     useEffect(()=>{
-        axios.interceptors.response.use(function (response) {
+      instance.interceptors.response.use(function (response) {
             return response;
           }, function (error) {
-
-            
             console.log("error track in interseptor",error.response);
           });
     },[])
