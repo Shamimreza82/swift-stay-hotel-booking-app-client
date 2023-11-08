@@ -24,9 +24,20 @@ const Login = () => {
 
     const [email, setEmail] = useState(0)
     const [password, setPassword] = useState(0)
+    const [error, setError] = useState("");
 
     const handleLoginUser = async (e) => {
         e.preventDefault()
+
+        if (password.length < 6) {
+          return setError("Your password must be at least 6 characters");
+        } else if (!/^(?=.*[A-Z]).*$/.test(password)) {
+          return setError("Password must have at least one Uppercase Character.");
+        } else if (
+          !/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/.test(password)
+        ) {
+          return setError("Password must contain at least one Special Symbol.");
+        }
            
         try {
             await loginUser(email, password)
@@ -100,8 +111,9 @@ const handlegoogle = () => {
                       Forgot password?
                     </a>
                   </label>
+                  <p className="text-red-600">{error}</p>
                 </div>
-                <div className="form-control mt-6">
+                <div className="form-control mt-2">
                   <input type="submit" className="btn bg-green-500 hover:bg-slate-600 text-white" value='Login'></input>
                 </div>
               </form>

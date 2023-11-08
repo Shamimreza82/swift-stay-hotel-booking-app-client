@@ -20,9 +20,24 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [name, setName] = useState("")
     const {googleLogin} = useAuth()
+    const [error, setError] = useState("")
+    
 
     const handleRegister = async e => {
         e.preventDefault()
+        setError("")
+
+        if (password.length < 6) {
+          return setError("Your password must be at least 6 characters");
+        } else if (!/^(?=.*[A-Z]).*$/.test(password)) {
+          return setError("Password must have at least one Uppercase Character.");
+        } else if (
+          !/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/.test(password)
+        ) {
+          return setError("Password must contain at least one Special Symbol.");
+        }
+
+      
 
         try {
             await createUser (email, password)
@@ -115,6 +130,7 @@ const Register = () => {
                       Forgot password?
                     </a>
                   </label>
+                  <p className="text-rose-600">{error}</p>
                 </div>
                 <div className="form-control ">
                   <input type="submit" className="btn bg-green-600 hover:bg-slate-600 text-white" value='Register'></input>

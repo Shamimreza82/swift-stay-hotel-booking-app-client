@@ -137,6 +137,7 @@ const MyBookings = () => {
     <div className="bg-slate-100">
       <Helmet> <title>SwiftStay | My Booking</title></Helmet>
       <Navber></Navber>
+      <p className='md:text-2xl mt-10 pb-2 text-center border-b'>Manage Booking</p>
       <div className=" max-w-7xl min-h-screen py m-auto">
         <div className=" mt-10">
           <table className="table md:w-20 m-auto object-center">

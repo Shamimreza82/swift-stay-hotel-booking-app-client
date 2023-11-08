@@ -87,13 +87,13 @@ const RoomDetailes = () => {
             <p className="font-bold text-2xl">{roomType}</p>
             <p>Price Per Night: ${pricePerNight}</p>
             <p>Room Side: {roomSize}</p>
-            <p> Availability: {availability ? "Available" : "Unavailable"}</p>
+        
             <Link
               className="btn bg-green-500 border-none text-white"
               to={`/bookingDetiles/${_id}`}
               type="submit"
             >
-              Book Now
+              Book Room
             </Link>
           </div>
           <form className=" mt-6" action="">

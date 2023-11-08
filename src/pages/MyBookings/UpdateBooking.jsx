@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navber from '../../components/Navber';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
+
+
 
 const UpdateBooking = () => {
 
@@ -11,9 +13,36 @@ const UpdateBooking = () => {
     const singelBooking = useLoaderData()
     const [date, setDate] = useState()
     const navigate = useNavigate()
+    const [bookings, setBookings] =useState([])
+     
+    useEffect(()=>{
+      axios.get('http://localhost:5000/booking')
+      .then(res => {
+        setBookings(res.data)
+      })
+    },[])
 
+    const fineBookingdate = bookings.map(booking => booking.date == date)
+    console.log(fineBookingdate);
+
+ 
+   
    
     const updateBookingDate = () => {
+
+      const fineBookingdate = bookings.map(booking => booking.date == date)
+      console.log(fineBookingdate);
+
+      console.log(fineBookingdate);
+      if(fineBookingdate.includes(true) === true){
+ 
+      return  Swal.fire({
+          title: "Room Already book in this date",
+          text: "Please try anther date",
+          icon: "error"
+        });
+     }
+
      
       axios.put(`http://localhost:5000/booking/${id}`, {date} )
       .then(res => {
@@ -32,10 +61,12 @@ const UpdateBooking = () => {
 
 
     return (
-        <div>
+        <div className=''>
           <Helmet> <title>SwiftStay | Update Booking</title></Helmet>
       <Navber></Navber>
-      <div className=" max-w-7xl m-auto grid grid-cols-12">
+      <p className='md:text-2xl mt-10 pb-2 text-center border-b'>Update Your Booking</p>
+      <div className=" max-w-7xl m-auto ">
+        
         <div className="bg-slate-200 col-span-8 mt-5">
           <table className="table">
             {/* head */}
@@ -82,7 +113,7 @@ const UpdateBooking = () => {
                   
                   <td>$  {singelBooking.pricePerNight}</td>
                   <th>
-                    <button onClick={updateBookingDate} className="btn btn-ghost btn-xs">Update</button>
+                    <button onClick={updateBookingDate} className="p-2 rounded-md bg-green-200 btn-sm text-green-600 font-bold">Update</button>
                   </th>
                 
                 </tr>
