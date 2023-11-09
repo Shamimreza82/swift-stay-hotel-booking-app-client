@@ -7,8 +7,10 @@
       "availability": true,
       "roomImages": ["https://i.ibb.co/ySHLXg6/rooms-2.jpg", 
       "https://i.ibb.co/fns2j4T/room45.jpg", "https://i.ibb.co/0mH3DqV/rooms-1.jpg"],
+      "reviews": 3,
       "specialOffers": {
         "discountPercentage": 10,
+       
         "offerDescription": "Book now and get 10% off on your stay!"
       },
       "features": ["Queen-sized bed", "Work desk", "High-speed Wi-Fi", "Air conditioning", "Flat-screen TV", "Ensuite bathroom"]
@@ -20,6 +22,7 @@
       "roomSize": "35 sqm",
       "availability": true,
       "roomImages": ["https://i.ibb.co/F0bcpm1/rooms-3.jpg", "https://i.ibb.co/t2DW6dH/rooms-11.jpg", "https://i.ibb.co/qMLkNp1/rooms-12.jpg"],
+      "reviews": 4,
       "specialOffers": null,
       "features": ["King-sized bed", "Sitting area", "Mini-bar", "Balcony with a view", "Spa access", "Bathrobes and slippers"]
     },
@@ -30,6 +33,7 @@
       "roomSize": "50 sqm",
       "availability": true,
       "roomImages": ["https://i.ibb.co/4SQfG02/rooms-4.jpg", "https://i.ibb.co/MsjjLfQ/rooms-13.jpg", "https://i.ibb.co/8mKcQt6/rooms-14.jpg"],
+      "reviews": 5,
       "specialOffers": {
         "discountPercentage": 15,
         "offerDescription": "Enjoy a 15% discount on bookings for this suite!"
@@ -43,6 +47,7 @@
       "roomSize": "40 sqm",
       "availability": true,
       "roomImages": ["https://i.ibb.co/3Rf5zbW/rooms-5.jpg", "https://i.ibb.co/xCrjb47/rooms-15.jpg", "https://i.ibb.co/f08vLf5/rooms-16.jpg"],
+      "reviews": 2,
       "specialOffers": null,
       "features": ["Multiple beds", "Kids' play area", "Game console", "Connecting rooms", "Child-friendly amenities", "Complimentary breakfast for children"]
     },
@@ -54,6 +59,7 @@
       "availability": true,
       "roomImages": ["https://i.ibb.co/30nwwpT/rooms-6.jpg", "https://i.ibb.co/kqd8H5K/rooms-29.jpg", "https://i.ibb.co/pndmrmr/rooms-30.jpg"],
       "specialOffers": null,
+      "reviews": 8,
       "features": ["Twin bed", "Work desk", "City view", "Coffee maker", "In-room safe", "24/7 room service"]
     },
     {
@@ -63,6 +69,7 @@
       "roomSize": "30 sqm",
       "availability": true,
       "roomImages": ["https://i.ibb.co/WFc1wX1/rooms-7.jpg", "https://i.ibb.co/nM5pqFx/rooms-17.jpg", "https://i.ibb.co/nBqBVR2/rooms-22.jpg"],
+      "reviews": 9,
       "specialOffers": null,
       "features": ["Double bed with premium bedding", "Chaise lounge", "Smart TV", "Walk-in shower", "Mini-fridge", "Complimentary welcome gift"]
     },
@@ -73,6 +80,7 @@
       "roomSize": "80 sqm",
       "availability": true,
       "roomImages": ["https://i.ibb.co/zQDyVfs/rooms-8.jpg", "https://i.ibb.co/fxFTW87/rooms-23.jpg", "https://i.ibb.co/6gCgKTX/rooms-24.jpg"],
+      "reviews": 7,
       "specialOffers": {
         "discountPercentage": 20,
         "offerDescription": "Book now and get 20% off on this exquisite penthouse suite!"
@@ -86,8 +94,20 @@
       "roomSize": "120 sqm",
       "availability": true,
       "roomImages": ["https://i.ibb.co/fns2j4T/room45.jpg", "https://i.ibb.co/zQDyVfs/rooms-8.jpg", "https://i.ibb.co/MsjjLfQ/rooms-13.jpg"],
+      "reviews": 12,
       "specialOffers": "Complimentary breakfast and guided nature walks",
       "features": ["Panoramic mountain views", "Cozy fireplace", "Private hiking trails", "Gourmet dining experiences", "Spa and wellness facilities"]
+    }, 
+    {
+      "roomType": "Beachfront Villa",
+      "description": "Experience the ultimate luxury in our beachfront villas, where the sound of waves lulls you into a state of tranquility. Indulge in the perfect blend of opulence and relaxation, surrounded by pristine sands and crystal-clear waters. Our beachfront villas offer an elegant and private ambiance, perfect for rekindling romance and creating lasting memories. Bask in the sun on your private terrace or embark on thrilling water sports, immersing yourself in the beauty of the ocean. Enjoy a lavish retreat that rejuvenates the senses, leaving you with cherished moments of a blissful beachfront escape.",
+      "pricePerNight": 800,
+      "roomSize": "200 sqm",
+      "availability": true,
+      "roomImages": ["https://i.ibb.co/kqd8H5K/rooms-29.jpg", "https://i.ibb.co/2jCBks6/rooms-27.jpg", "https://i.ibb.co/0mH3DqV/rooms-1.jpg"],
+      "reviews": 9,
+      "specialOffers": "Complimentary sunset cruise and beachside dining",
+      "features": ["Private beach access", "Infinity pool with ocean view", "Gourmet dining experiences", "Spa and wellness facilities", "Water sports activities"]
     }
   ]
   

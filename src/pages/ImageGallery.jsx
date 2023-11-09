@@ -2,18 +2,18 @@ import React from "react";
 
 const ImageGallery = () => {
   return (
-    <div className=" m-auto">
+    <div className=" m-auto bg-slate-50">
         <section className="text-gray-600 body-font">
       <div className="container px-5 md:py-24 mt-3 mx-auto flex flex-wrap">
-        <div className="flex w-full mb-20 flex-wrap">
-          <h1 className=" md:text-4xl text-xl font-medium title-font text-zinc-800 lg:w-1/3 lg:mb-0 mb-4">
+        <div className="flex w-full md:mb-20 mb-8 flex-wrap">
+          <h1 className=" md:text-4xl mt-5 md:mt-0 text-center md:text-left text-xl font-medium title-font text-zinc-800 lg:w-1/3 lg:mb-0 mb-4" >
           Escape to Luxury Unwind in Our Exquisite Hotel Getaway
           </h1>
           <p className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed md:text-sm">
           Indulge in a world of opulence and sophistication at our exquisite hotel getaway. From the moment you arrive, be prepared to be enveloped in an ambiance of luxury and comfort, where every detail has been meticulously curated to cater to your every need.
           </p>
         </div>
-        <div className="flex flex-wrap md:-m-2 -m-1">
+        <div className="flex flex-wrap md:-m-2 -m-3 ">
           <div className="flex flex-wrap w-1/2">
             <div className="md:p-2 p-1 w-1/2 hover:scale-105 duration-300" data-aos="zoom-in">
               <img

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
     return (
-        <section className="px-4 py-32 mx-auto max-w-7xl flex justify-center h-screen ">
+        <section className=" flex justify-center items-center bg-slate-50 ">
           <div>
           <Lottie className="w-[100%]" animationData={animation}> </Lottie>
          <div className="flex justify-center">

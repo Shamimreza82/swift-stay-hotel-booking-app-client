@@ -3,7 +3,7 @@ import logo from '../../assets/images/Untitled-1.png'
 
 const Footer = () => {
     return (
-        <div className='mt-10 -m-8'>
+        <div className=' mt-5'>
             <footer className="bg-zinc-800">
     <div className="container p-10 mx-auto">
         <div className="lg:flex">

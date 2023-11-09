@@ -1,17 +1,34 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import logo from "../assets/images/Untitled-1.png";
+import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
 
 const Navber = () => {
   const navigate = useNavigate();
 
-  const { user, logeOut } = useAuth();
+  const { user, logeOut, googleLogin } = useAuth();
 
   const handleLogout = () => {
     logeOut().then(() => {
       navigate("/login");
     });
   };
+
+
+  const handlegoogle = () => {
+    googleLogin()
+    .then( resilt => {
+      console.log(resilt);
+      navigate(location?.state ? location.state : "/");
+      Swal.fire({
+        title: "Good job!",
+        text: "Login Successful",
+        icon: "success"
+      });
+    })
+   
+  }
 
   return (
     <div className="w-full shadow-md bg-zinc-800 ">
@@ -163,23 +180,25 @@ const Navber = () => {
             </div>
           </div>
         </div>
-        <div className="drawer-side z-50">
+        <div className="drawer-side z-50 ">
           <label
             htmlFor="my-drawer-3"
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu p-4 w-80 min-h-screen bg-base-200 z-50 space-y-3">
+          <ul className="menu p-4 w-80 min-h-screen bg-slate-100  space-y-3">
             {/* Sidebar content here ------------------------------ */}
-            <img className="w-40" src={logo} alt="" />
+            <div className="flex justify-center items-center rounded-md py-2">
+            <img className="w-40 " src={logo} alt="" />
+            </div>
             <NavLink
               to="/"
               className={({ isActive, isPending, isTransitioning }) =>
                 [
-                  isPending ? "" : "border pl-2 py-1 ",
+                  isPending ? "" : "border pl-2 py-2 text-base bg-zinc-200 rounded-md font-bold text-zinc-700  ",
                   isActive
-                    ? "   border pl-2 py-1 border-green-500"
-                    : "hover:scale-110 duration-300",
+                    ? "border pl-2 py-3 "
+                    : "",
                   isTransitioning ? "transitioning" : "",
                 ].join(" ")
               }
@@ -190,10 +209,10 @@ const Navber = () => {
               to="/rooms"
               className={({ isActive, isPending, isTransitioning }) =>
                 [
-                  isPending ? "" : " border pl-2 py-1",
+                  isPending ? "" : "border pl-2 py-2 text-base bg-zinc-200 rounded-md font-bold text-zinc-700  ",
                   isActive
-                    ? "   border pl-2 py-1 border-green-500"
-                    : "hover:scale-110 duration-300",
+                    ? "border pl-2 py-3 "
+                    : "",
                   isTransitioning ? "transitioning" : "",
                 ].join(" ")
               }
@@ -205,10 +224,10 @@ const Navber = () => {
               to="/myBookings"
               className={({ isActive, isPending, isTransitioning }) =>
                 [
-                  isPending ? "" : " border pl-2 py-1",
+                  isPending ? "" : "border pl-2 py-2 text-base bg-zinc-200 rounded-md font-bold text-zinc-700  ",
                   isActive
-                    ? "   border pl-2 py-1 border-green-500"
-                    : "hover:scale-110 duration-300",
+                    ? "border pl-2 py-3 "
+                    : "",
                   isTransitioning ? "transitioning" : "",
                 ].join(" ")
               }
@@ -220,10 +239,10 @@ const Navber = () => {
               to="/about"
               className={({ isActive, isPending, isTransitioning }) =>
                 [
-                  isPending ? "" : " border pl-2 py-1",
+                  isPending ? "" : "border pl-2 py-2 text-base bg-zinc-200 rounded-md font-bold text-zinc-700  ",
                   isActive
-                    ? "   border pl-2 py-1 border-green-500"
-                    : "hover:scale-110 duration-300",
+                    ? "border pl-2 py-3 "
+                    : "",
                   isTransitioning ? "transitioning" : "",
                 ].join(" ")
               }
@@ -235,16 +254,24 @@ const Navber = () => {
               to="/contact"
               className={({ isActive, isPending, isTransitioning }) =>
                 [
-                  isPending ? " " : "  border pl-2 py-1",
+                  isPending ? "" : "border pl-2 py-2 text-base bg-zinc-200 rounded-md font-bold text-zinc-700  ",
                   isActive
-                    ? "   border pl-2 py-1 border-green-500"
-                    : "hover:scale-110 duration-300",
+                    ? "border pl-2 py-3 "
+                    : "",
                   isTransitioning ? "transitioning" : "",
                 ].join(" ")
               }
             >
               Contact Us
             </NavLink>
+            <li>
+              <Link to='/login' className="bg-green-500 py-3 font-bold text-white">Login</Link>
+            </li>
+            <div className="flex justify-center bg">
+                  <button onClick={handlegoogle} className="flex gap-5 mb-3 font-bold text-gray-700  bg-zinc-200 mt-2 hover:bg-slate-200 duration-200 py-2 px-4 rounded-full items-center ">
+                    <FcGoogle className="text-3xl "></FcGoogle>
+                    Login with google</button>
+                </div>
           </ul>
         </div>
       </div>

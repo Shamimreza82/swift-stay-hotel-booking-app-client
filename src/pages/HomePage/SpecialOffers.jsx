@@ -5,7 +5,7 @@ const SpecialOffers = () => {
   const rooms = useLoaderData();
   console.log(rooms);
   return (
-    <div className=" md:pt-20 bg-slate-50 ">
+    <div className="  bg-gray-50-50 mt-7 ">
       <div>
         <p
           className="md:text-4xl text-xl 
@@ -18,7 +18,7 @@ const SpecialOffers = () => {
 
       <div>
         <Marquee>
-          <div className="flex gap-6">
+          <div className="flex gap-6 mb-10">
             {rooms?.map((images) => (
               <div key={images._id}>
                 <div className="relative " data-aos="zoom-in-down">
@@ -27,14 +27,14 @@ const SpecialOffers = () => {
                     src={images.roomImages}
                     alt=""
                   />
-                  <p
+                  {/* <p
                     className="absolute bottom-0 text-red-600 font-bold md:p-3 p-1
                                  rounded-tr-2xl bg-yellow-50 border-red-600 border-r-2 "
                   >
-                    Spacial Offer<span className="md:text-2xl ml-2">10%</span>{" "}
-                  </p>
+                   <span className="md:text-2xl ml-2">{images?.specialOffers?.discountPercentage}</span>{""}
+                  </p> */}
                 </div>
-                <p></p>
+                <p className="font-bold text-red-500">{ images?.specialOffers?.offerDescription}</p>
               </div>
             ))}
           </div>

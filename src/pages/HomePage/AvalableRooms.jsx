@@ -27,7 +27,7 @@ const AvalableRooms = () => {
             <div
               key={rooms._id}
               className=" p-4 hover:scale-105 duration-200"
-              data-aos="zoom-in">
+              >
                 <p>{rooms.roomType}</p>
               <div className="flex relative" >
     
@@ -37,14 +37,17 @@ const AvalableRooms = () => {
                   src={rooms.roomImages[2]}
                 />
 
-                <div className="md:px-8 md:py-10 flex justify-center items-center  relative h-48 z-10 w-full border-4 border-gray-200 duration-300  opacity-0 hover:opacity-100 ">
+                <div className="md:px-8 md:py-10 flex justify-center items-center 
+                 relative h-48 z-10 w-full border-4  border-green-300 duration-300  opacity-0 hover:opacity-100 ">
                
                   <div className="hover:shadow-xl">
                 
-                    <h2 className="tracking-widest text-xl title-font font-medium text-green-400 mb-1 drop-shadow-2xl dro">
+                    {/* <h2 className="tracking-widest text-xl title-font font-medium
+                      text-green-400 mb-1 drop-shadow-2xl bg-slate-500 p-2">
                       {rooms.roomType}
-                    </h2>
-                    <Link to={`/roomsDeities/${rooms._id}`} className="text-green-400 text-sm border py-1 px-2 shadow-2xl">
+                    </h2> */}
+                    <Link to={`/roomsDeities/${rooms._id}`} className="text-green-400
+                     bg-zinc-800 mt-3 text-sm border py-1 px-2 shadow-xl rounded-sm">
                       Book Now
                     </Link>
                   </div>

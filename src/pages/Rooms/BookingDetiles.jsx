@@ -86,10 +86,8 @@ const BookingDetiles = () => {
      
     }
 
-    axios
-      .post("https://hotel-management-server-three.vercel.app/api/v1/booking", booking, {
-        withCredentials: true,
-      })
+         axios.post("https://hotel-management-server-three.vercel.app/api/v1/booking", booking, {
+        withCredentials: true,})
       .then((res) => {
         console.log(res.data);
         if (res.data.acknowledged) {
@@ -99,26 +97,26 @@ const BookingDetiles = () => {
       });
   };
 
-  const handelReview = (e) => {
-    e.preventDefault();
+  // const handelReview = (e) => {
+  //   e.preventDefault();
 
-    const name = e.target.name.value;
-    const rating = e.target.rating.value;
-    const text = e.target.text.value;
+  //   const name = e.target.name.value;
+  //   const rating = e.target.rating.value;
+  //   const text = e.target.text.value;
 
-    const review = {
-      name,
-      rating,
-      text,
-    };
-    console.log(review);
+  //   const review = {
+  //     name,
+  //     rating,
+  //     text,
+  //   };
+  //   console.log(review);
 
-    axios
-      .post("https://hotel-management-server-three.vercel.app/rating", review, { withCredentials: true })
-      .then((res) => {
-        console.log(res.data);
-      });
-  };
+  //   axios
+  //     .post("https://hotel-management-server-three.vercel.app/rating", review, { withCredentials: true })
+  //     .then((res) => {
+  //       console.log(res.data);
+  //     });
+  // };
 
   return (
     <div className="bg-gray-50">

@@ -10,6 +10,7 @@ const Rooms = () => {
   const [roomsAll, setrRooms] = useState([]);
   const [price, setPrice] = useState(roomsAll);
   const [reviews, setReviews] = useState([])
+
   console.log(price);
 
   useEffect(() => {
@@ -37,6 +38,11 @@ const Rooms = () => {
     setPrice(e.target.value);
   };
 
+
+  const sumofAll = roomsAll.reduce((a, b) => a + b.reviews, 0)
+ 
+
+
   return (
     <div className="bg-gray-50">
       <Helmet> <title>SwiftStay | Rooms</title></Helmet>
@@ -50,7 +56,7 @@ const Rooms = () => {
         each designed to cater to your unique preferences and needs. Whether
         you're seeking a cozy retreat or an indulgent escape,
       </p>
-      <p className="text-right max-w-7xl "> Total Reviews: {reviews.length}</p>
+      <p className="text-right max-w-7xl "> Total Reviews: {sumofAll}</p>
       <div className=" border border-green-500 mb-3 p-1 rounded-md max-w-7xl m-auto mt-5">
         <select
           onChange={handlePriceSet}
@@ -90,9 +96,15 @@ const Rooms = () => {
                   {/* <p className="absolute bottom-5 text-xl text-red-600 font-bold shadow-2xl p-2">
                   {rooms.specialOffers ? `Discount: ${rooms.specialOffers.discountPercentage} %`:''}</p> */}
                   <div className="flex justify-between py-3 px-4 bg-slate-100 rounded-b-md  border-b-green-600 border">
+                    <div className="flex  justify-between gap-2">
                     <p className="font-bold text-zinc-800">{rooms?.roomType}</p>
-                    <p className="text-red-600 font-bold text-sm">${rooms?.pricePerNight}</p>
+                    <p className="text-red-600 font-bold text-sm">(${rooms?.pricePerNight})</p>
+                    </div>
+                    <div>
+                    <p className="font-bold text-gray-500">Reviews {rooms.reviews}</p>
                   </div>
+                  </div>
+                  
                 </div>
               </Link>
             ))}

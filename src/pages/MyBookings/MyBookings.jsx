@@ -10,13 +10,19 @@ import moment from "moment";
 import { Link, json } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
+
 const MyBookings = () => {
   const axiosSecure = useAxiosRoute();
   const { user } = useAuth();
   // const [myBooking, setMybooking] = useState([]);
   const [booked, setBooked] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [newBooking, setNewBooking] = useState()
+  const [success, setSuccess] = useState("")
+  
 
+
+  console.log(success);
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["booking"],
@@ -29,9 +35,7 @@ const MyBookings = () => {
     },
   });
 
-
-  console.log(data?.data);
-
+ 
 
   const handelDeletebooking = (_id) => {
     console.log(_id);
@@ -57,10 +61,11 @@ const MyBookings = () => {
       }
     });
   };
-
-
+ 
+ 
   useEffect(() => {
-    axios.get("https://hotel-management-server-three.vercel.app/booking").then((res) => {
+    axios.get("https://hotel-management-server-three.vercel.app/booking", {withCredentials: true})
+      .then((res) => {
       setBooked(res.data);
     });
   }, []);
@@ -75,33 +80,50 @@ const MyBookings = () => {
 
   console.log(booked);
 
-  const handelCanelBooking = (date) => {
+
+
+  const handelCanelBooking = (date, _id) => {
     console.log(date);
+    
+    
 
     const bookingDate = moment(date);
     const cancellationLimit = bookingDate.clone().subtract(1, "days");
 
     const currentDate = moment();
     if (currentDate.isBefore(cancellationLimit)) {
-      console.log(
-        "You can cancel the booking before",
-        cancellationLimit.format("YYYY-MM-DD")
-      );
+      setSuccess("cancel")
       Swal.fire({
         title: "Your Booking cancel",
         icon: "success",
       });
+
+      
     } else {
-      console.log(
-        "Cancellation period has passed. You cannot cancel the booking anymore."
-      );
-      Swal.fire({
+     Swal.fire({
         title: "Cancellation period has passed",
         text: "You cannot cancel the booking anymore.",
         icon: "error",
       });
+
+      axios.patch(`https://hotel-management-server-three.vercel.app/booking/${_id}`, {success: true})
+      .then(res => {
+        console.log(res.data);
+        if(res.data.modifiedCount > 0) {
+           console.log("allin one");
+         
+        } else {
+           refetch()
+        }
+        
+      })
+
+
+
     }
   };
+
+
 
   const handelReview = (e) => {
     e.preventDefault();
@@ -134,11 +156,12 @@ const MyBookings = () => {
   };
 
   return (
-    <div className="bg-slate-100">
+    <div className="bg-slate-100 overflow-x-hidden">
       <Helmet> <title>SwiftStay | My Booking</title></Helmet>
       <Navber></Navber>
-      <p className='md:text-2xl mt-10 pb-2 text-center border-b'>Manage Booking</p>
-      <div className=" max-w-7xl min-h-screen py m-auto">
+      <p className='md:text-2xl mt-3 md:mt-10 pb-2 text-center border-b'>Manage Booking</p>
+      
+      <div className=" max-w-7xl min-h-screen py m-auto ">
         <div className=" mt-10">
           <table className="table md:w-20 m-auto object-center">
             {/* head */}
@@ -149,10 +172,13 @@ const MyBookings = () => {
                 <th>Booking Date</th>
                 <th className="px-7">Price</th>
                 <th>Update Booking</th>
-                <th>Cancel Booking</th>
+                <th className="px-10">Cancel Booking</th>
                 <th>Delete Booking</th>
               </tr>
             </thead>
+            {
+        isLoading && <div className="flex justify-center">Loading.....</div>
+      }
             {data?.data.map((booking) => (
               <tbody key={booking._id} className="bg-slate-200 ">
                 <tr>
@@ -188,13 +214,17 @@ const MyBookings = () => {
                       Update
                     </Link>
                   </th>
-                  <th>
-                    <button
-                      onClick={() => handelCanelBooking(booking.date)}
+                  <th >
+                    {
+                      success === "cancel" ? <span onClick={() => handelCanelBooking(booking.date, booking._id)} className="btn-ghost btn-xs bg-gray-400 rounded-sm text-white">Booking Cancel</span> : 
+                      <button
+                      onClick={() => handelCanelBooking(booking.date, booking._id)}
                       className="btn-ghost btn-xs bg-yellow-500 rounded-sm text-white"
                     >
                       Cancel
                     </button>
+                    }
+                     
                   </th>
                   <th>
                     <button
