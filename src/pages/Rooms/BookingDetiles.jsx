@@ -1,12 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData} from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import Navber from "../../components/Navber";
-import moment from "moment/moment";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosRoute from "../../Hooks/useAxiosRoute";
 import { Helmet } from "react-helmet";
 import Footer from "../HomePage/Footer";
 
@@ -15,9 +13,9 @@ const BookingDetiles = () => {
   const { user } = useAuth();
   const room = useLoaderData();
   const [date, setDate] = useState(0);
-  const [rating, setrating] = useState([]);
   const [booked, setBooked] = useState([]);
-  const navigate = useNavigate()
+
+
 
   useEffect(() => {
     axios.get("https://hotel-management-server-three.vercel.app/booking", {withCredentials: true})
@@ -26,12 +24,6 @@ const BookingDetiles = () => {
     });
   }, []);
 
-
-  useEffect(() => {
-    axios.get("https://hotel-management-server-three.vercel.app/ratings").then((res) => {
-      setrating(res.data);
-    });
-  }, []);
 
   const {data: bookedRoom, isLoading, error, refetch} = useQuery({
     queryKey: ['booking'], 
@@ -43,11 +35,6 @@ const BookingDetiles = () => {
 
  console.log(bookedRoom?.data);
  console.log(booked);
-
-
-  // console.log(booked);
-  // console.log(room);
-  // console.log(date);
 
   const bookedName = bookedRoom?.data.map((book) => book.date === date);
   console.log(bookedName);
@@ -81,7 +68,9 @@ const BookingDetiles = () => {
 
     if (bookedName.includes(true)) {
       return (
-        Swal.fire("Already booked this Room", "Try another date", "error")
+        Swal.fire( `Already Booked
+          in this date 
+        `, "Try another date", "error")
       ) 
      
     }
@@ -91,7 +80,7 @@ const BookingDetiles = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.acknowledged) {
-          Swal.fire("Booking Successful", "You clicked my booking ", "success");
+          Swal.fire("Booking Successful", "Please Check My Bookings Section ", "success");
           refetch()
         }
       });
@@ -119,29 +108,31 @@ const BookingDetiles = () => {
   // };
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 ">
       <Navber></Navber>
       <Helmet> <title>SwiftStay | Booking Deities</title></Helmet>
    
-      <div className="max-w-7xl m-auto grid md:grid-cols-12 md:gap-5 mt-7 ">
-        <div className="md:col-span-8 bg-slate-200 rounded-md">
+      <div className="max-w-7xl m-auto grid md:grid-cols-12 md:gap-5 mt-7 md:py-24 py-4 ">
+        <div className="md:col-span-6  rounded-md">
           <img className="rounded-md" src={roomImages} alt="" />
-          <form className="ml-7"  onSubmit={handelbooking}  action="">
-            <p className="font-bold text-3xl mt-7">{roomType}</p>
-            <p>Price Per Night: ${pricePerNight}</p>
-            <p>Room Side: {roomSize}</p>
-            <p> Availability: {availability ? "Available" : "Unavailable"}</p>
-            <label>
-              
-            </label>
-            <div className="flex items-center">
+        </div>
+
+        <div className="col-span-4  rounded-md">
+        <form className="ml-7"  onSubmit={handelbooking}  action="">
+            <p className="font-bold text-3xl text-zinc-800 mt-7">{roomType}</p>
+            <div className="space-y-2 mt-4">
+              <p className="font-bold text-gray-700">Price Per Night: <span className="text-red-500">${pricePerNight}</span></p>
+              <p className="font-bold text-gray-700">Room Size: {roomSize}</p>
+              <p className="font-bold text-gray-700"> Availability:  <span className="text-green-600">{availability ? "Available" : "Unavailable"}</span></p>
+            </div>
+            <div className="flex items-center"> 
             <input
-              className="block py-3 px-4 my-3 rounded-md "
+              className="block py-2 px-4 my-3 rounded-md border "
               type="date"
               required
               onChange={(e) => setDate(e.target.value)}
             /> 
-            <p className="bg-red-200 p-2 ml-5 text-red-600">Select Your Booking Date</p>
+            <p className="bg-red-200 p-1 rounded-md ml-5 text-red-600">Select Your Booking Date</p>
             </div>
             <input
               className="btn mb-5 bg-green-500 text-white"
@@ -149,53 +140,10 @@ const BookingDetiles = () => {
               value="Confirm Booking"
             />
           </form>
-
-
-        </div>
-
-        {/* Reveiew Section */}
-
-        <div className="col-span-4  rounded-md">
-        <p className="text-center text-xl mt-2 bg-slate-100 py-2 rounded-md">Review</p>
-          {/* <p className="text-center text-xl mt-2">Review</p>
-          <div className="bg-slate-200 mt-6 rounded-md" action="">
-            <div>
-              <form onSubmit={handelReview} className="card-body">
-                <div className="form-control">
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    name="name"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <input
-                    type="text"
-                    name="rating"
-                    placeholder="rating"
-                    className="input input-bordered"
-                    required
-                  />
-                  <textarea
-                    className="textarea textarea-accent mt-4"
-                    placeholder="Whats your feedback"
-                    name="text"
-                  ></textarea>
-                </div>
-                <div className="form-control mt-6">
-                  <input
-                    className="btn mb-5 bg-green-500 text-white"
-                    type="submit"
-                    value="Submit"
-                  />
-                </div>
-              </form>
-            </div>
-          </div> */}
+     
+        {/* <p className="text-center text-xl mt-2 bg-slate-100 py-2 rounded-md">Review</p>
           {/* Ratting */}
-          {rating.map((ratin) => (
+          {/* {rating.map((ratin) => (
             <div key={ratin._id} className="bg-slate-100 mt-5 p-4  rounded-md">
               <div className="flex gap-4">
 
@@ -236,8 +184,9 @@ const BookingDetiles = () => {
               </div>
               <p className=" mt-4">{ratin.text}</p>
             </div>
-          ))}
+          ))} */} 
         </div>
+        
       </div>
       <Footer></Footer>
     </div>

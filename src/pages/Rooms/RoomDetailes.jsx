@@ -8,7 +8,6 @@ import {
 
 
 import { useEffect, useState } from "react";
-import moment from "moment";
 import Footer from "../HomePage/Footer";
 import { Helmet } from "react-helmet";
 
@@ -60,13 +59,14 @@ const RoomDetailes = () => {
       </div>
       <div className="max-w-7xl m-auto grid md:grid-cols-12 gap-4 mt-5 px-3">
         <div className=" md:col-span-8">
-          <div className="">
-            <img className="" src={roomImages[0]} alt="" />
-          </div>
-          <div className="grid grid-cols-2 gap-6 mt-6 ">
+        <div className="grid grid-cols-2 gap-6 mb-4 ">
             <img className="h-full" src={roomImages[1]} alt="" />
             <img className="h-full" src={roomImages[2]} alt="" />
           </div>
+          <div className="">
+            <img className="" src={roomImages[0]} alt="" />
+          </div>
+          
           <p className="text-2xl py-6 font-bold">{roomType}</p>
           <p className="text-gray-500">{description}</p>
           <div className="grid md:grid-cols-3 gap-4 py-10">

@@ -62,13 +62,14 @@ const MyBookings = () => {
     });
   };
  
- 
+
   useEffect(() => {
     axios.get("https://hotel-management-server-three.vercel.app/booking", {withCredentials: true})
       .then((res) => {
       setBooked(res.data);
     });
   }, []);
+  
 
   useEffect(() => {
     axios.get("https://hotel-management-server-three.vercel.app/ratings").then((res) => {
